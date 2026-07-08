@@ -22,8 +22,6 @@ import {
   Loader2,
   Quote,
   Play,
-  Volume2,
-  VolumeX,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-trading-floor.jpg";
@@ -259,7 +257,7 @@ function TopBar() {
                       setEdition(e.code);
                       setShowEditionDropdown(false);
                     }}
-                    className="flex items-center gap-2 w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700"
+                    className="flex items-center gap-2 w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700 cursor-pointer"
                   >
                     <span>{e.flag}</span>
                     <span>{e.name}</span>
@@ -292,7 +290,7 @@ function TopBar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="/enquiry" className="text-link hover:underline font-bold">
+          <a href="/enquiry" className="text-red-600 hover:underline font-bold">
             Portal
           </a>
           <a href="#signin" className="hover:text-slate-900">
@@ -308,9 +306,8 @@ function Masthead() {
   return (
     <div className="bg-white py-4 text-center">
       <div className="mx-auto max-w-[1280px] px-4">
-        {/* Times of India styled masthead */}
         <h1 
-          className="font-display text-[4vw] tracking-wider text-[#000000] uppercase font-extrabold border-none"
+          className="font-display text-[4vw] tracking-wider text-black uppercase font-extrabold border-none"
           style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: "0.06em" }}
         >
           The Investor's Chronicle
@@ -324,7 +321,7 @@ function NavigationBar() {
   return (
     <div className="border-y border-slate-900 bg-white">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 sm:px-6">
-        <nav aria-label="Times of India Main" className="flex-1 overflow-x-auto whitespace-nowrap scrollbar-none">
+        <nav aria-label="Main" className="flex-1 overflow-x-auto whitespace-nowrap scrollbar-none">
           <ul className="flex items-center gap-5 py-2.5 font-sans text-[13px] font-bold text-slate-800">
             {NAV.map((item, idx) => (
               <li key={idx} className="hover:text-red-600 transition-colors">
@@ -336,8 +333,8 @@ function NavigationBar() {
 
         {/* Right Nav Icons */}
         <div className="flex items-center gap-4 border-l border-slate-200 pl-4 py-2 text-slate-800 font-sans text-xs">
-          {/* TOI+ badge equivalent */}
-          <span className="bg-[#1e293b] text-[#facc15] font-black px-2 py-0.5 rounded text-[11px] tracking-wider cursor-pointer">
+          {/* Muted/Red IC+ badge */}
+          <span className="border border-red-600 text-red-600 font-black px-2 py-0.5 rounded text-[11px] tracking-wider cursor-pointer">
             IC+
           </span>
           <button aria-label="Search" className="hover:text-red-600 cursor-pointer">
@@ -402,7 +399,7 @@ function StickyBar({ progress }: { progress: number }) {
           </ul>
         </nav>
         <div className="flex items-center gap-3 font-sans text-[12px] uppercase">
-          <a href="/enquiry" className="bg-[#1e293b] text-yellow-400 font-extrabold px-2.5 py-1 rounded text-xs">
+          <a href="/enquiry" className="bg-red-600 text-white font-extrabold px-2.5 py-1 rounded text-xs hover:bg-red-700 transition-colors">
             IC+ Portal
           </a>
         </div>
@@ -419,9 +416,9 @@ function StickyBar({ progress }: { progress: number }) {
 function Ticker() {
   const items = [...TICKER, ...TICKER];
   return (
-    <div className="border-b border-slate-200 overflow-hidden bg-slate-50">
+    <div className="border-b border-slate-200 overflow-hidden bg-white">
       <div className="mx-auto flex max-w-[1280px] items-stretch">
-        <span className="flex items-center border-r border-slate-200 bg-slate-200 px-3 font-sans text-[9px] font-bold uppercase tracking-wider text-slate-700 z-10 whitespace-nowrap">
+        <span className="flex items-center border-r border-slate-200 bg-slate-100 px-3 font-sans text-[9px] font-bold uppercase tracking-wider text-slate-700 z-10 whitespace-nowrap">
           Live Markets
         </span>
         <div className="relative flex-1 overflow-hidden">
@@ -432,7 +429,7 @@ function Ticker() {
                 <span className="text-slate-500">{t.v}</span>
                 <span
                   className={
-                    t.d.startsWith("-") ? "text-red-600" : "text-emerald-600"
+                    t.d.startsWith("-") ? "text-red-600" : "text-slate-900 font-semibold"
                   }
                 >
                   {t.d}
@@ -495,7 +492,7 @@ function Stat({ n, suffix = "", label }: { n: number; suffix?: string; label: st
   const display =
     n % 1 === 0 ? Math.round(v).toLocaleString() : v.toFixed(1);
   return (
-    <div ref={ref} className="bg-slate-50 border border-slate-200 p-4 text-center rounded">
+    <div ref={ref} className="bg-white border border-slate-200 p-4 text-center rounded">
       <div className="font-sans text-3xl font-extrabold text-slate-900">
         {display}
         {suffix}
@@ -608,7 +605,7 @@ function ConsultationForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-slate-300 bg-slate-50 p-8 text-center rounded-lg" role="status">
+      <div className="border border-slate-300 bg-white p-8 text-center rounded-lg" role="status">
         <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white">
           <Check className="h-5 w-5" />
         </span>
@@ -720,7 +717,7 @@ function ConsultationForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full inline-flex items-center justify-center gap-2 rounded bg-slate-900 hover:bg-slate-800 text-white font-sans text-xs font-bold uppercase tracking-widest py-3 cursor-pointer"
+          className="w-full inline-flex items-center justify-center gap-2 rounded bg-slate-950 hover:bg-red-600 text-white font-sans text-xs font-bold uppercase tracking-widest py-3 transition-colors cursor-pointer"
         >
           {status === "loading" ? (
             <>
@@ -757,7 +754,7 @@ export function IndexPage() {
   useReveal();
 
   return (
-    <div id="top" className="bg-[#f8fafc] text-slate-900 font-sans antialiased min-h-screen">
+    <div id="top" className="bg-white text-slate-900 font-sans antialiased min-h-screen">
       <StickyBar progress={progress} />
 
       {/* header spacer for sticky bar */}
@@ -771,7 +768,7 @@ export function IndexPage() {
       <Ticker />
 
       {/* Main 3-Column Grid Layout */}
-      <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6">
+      <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* LEFT COLUMN: Sidebar Feed (~20% width equivalent) */}
@@ -797,7 +794,7 @@ export function IndexPage() {
                   playsInline
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-white shadow-lg">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-white shadow-lg border border-red-500">
                     <Play className="h-4 w-4 fill-current ml-0.5" />
                   </span>
                 </div>
@@ -839,7 +836,6 @@ export function IndexPage() {
                 Exclusive investigation
               </p>
               
-              {/* Giant clean sans-serif headline like Times of India */}
               <h2 
                 className="mt-2 font-sans text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight"
                 style={{ letterSpacing: "-0.02em" }}
@@ -864,7 +860,6 @@ export function IndexPage() {
                 </figcaption>
               </figure>
 
-              {/* Main article content in readable sans-serif font */}
               <div className="font-sans text-[15px] text-slate-800 leading-relaxed space-y-4">
                 <p>
                   In the paneled reading rooms of London's West End and along the twenty-third floor of a Midtown Manhattan tower, an old habit is quietly returning. For the first time since the era of zero rates began, some of the world's largest allocators of capital are talking, once again, about the price of things — about earnings, about balance sheets, about the cost of being wrong.
@@ -887,7 +882,7 @@ export function IndexPage() {
                 </div>
 
                 {/* Premium HTML Video section */}
-                <figure className="my-6 border border-slate-200 rounded-lg p-4 bg-slate-50">
+                <figure className="my-6 border border-slate-200 rounded-lg p-4 bg-white">
                   <h4 className="font-sans font-bold text-base text-slate-900 mb-2">
                     Featured Video Report: Capital Allocation Dynamics
                   </h4>
@@ -953,7 +948,7 @@ export function IndexPage() {
               <span className="text-xs text-slate-500 cursor-pointer hover:text-red-600">▶</span>
             </div>
 
-            {/* Video widget item 1 (High contrast red banner title) */}
+            {/* Video widget item 1 (Red header tag) */}
             <article className="space-y-2">
               <div className="bg-red-600 text-white font-sans text-[11px] font-black uppercase px-2.5 py-1 text-center tracking-wider rounded-t">
                 LIQUIDITY CRUNCH
@@ -967,7 +962,7 @@ export function IndexPage() {
                     playsInline
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-white shadow-lg">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-white shadow-lg border border-red-500">
                       <Play className="h-4 w-4 fill-current ml-0.5" />
                     </span>
                   </div>
@@ -978,9 +973,9 @@ export function IndexPage() {
               </div>
             </article>
 
-            {/* Video widget item 2 */}
+            {/* Video widget item 2 (Neutral black header tag) */}
             <article className="space-y-2">
-              <div className="bg-[#1e293b] text-[#facc15] font-sans text-[11px] font-black uppercase px-2.5 py-1 text-center tracking-wider rounded-t">
+              <div className="bg-slate-950 text-white font-sans text-[11px] font-black uppercase px-2.5 py-1 text-center tracking-wider rounded-t">
                 AI CAPEX WATCH
               </div>
               <div className="border border-slate-200 border-t-0 p-3 rounded-b bg-white shadow-sm">
@@ -992,7 +987,7 @@ export function IndexPage() {
                     playsInline
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-white shadow-lg border border-slate-800">
                       <Play className="h-4 w-4 fill-current ml-0.5" />
                     </span>
                   </div>
@@ -1022,7 +1017,7 @@ export function IndexPage() {
 
       {/* Footer */}
       <footer className="mt-16 border-t border-slate-300 bg-slate-950 text-slate-400 py-12 font-sans text-xs">
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h4 className="font-display font-extrabold text-white text-base uppercase" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               The Investor's Chronicle
@@ -1047,7 +1042,7 @@ export function IndexPage() {
           </div>
           <div>
             <h5 className="font-bold text-white uppercase mb-3">Institutional</h5>
-            <a href="/enquiry" className="text-yellow-400 font-bold hover:underline">
+            <a href="/enquiry" className="text-red-500 font-bold hover:underline">
               Meridian Prime Portal
             </a>
           </div>

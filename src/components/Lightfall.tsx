@@ -5,12 +5,18 @@ interface LightfallProps {
   density?: number;
   streakCount?: number;
   speed?: number;
+  color?: string;     // Color of the falling particles/streaks
+  bgColor?: string;   // Tailwind class for background color
+  opacity?: number;   // Opacity of the canvas
 }
 
 export function Lightfall({
   density: propDensity,
   streakCount: propStreakCount,
   speed = 1.0,
+  color = "#ef4444",      // Default to red accent color
+  bgColor = "bg-white",   // Default to white theme background
+  opacity = 0.25,         // Muted default opacity for clean layout
 }: LightfallProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -137,8 +143,7 @@ export function Lightfall({
     });
 
     // 5. Create Program
-    // Gold/cyan accent color matching Meridian Prime theme (electric teal/cyan)
-    const themeColor = new Color("#06b6d4"); // Cyan-500
+    const themeColor = new Color(color);
     const program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
@@ -158,19 +163,18 @@ export function Lightfall({
     particles.setParent(scene);
 
     // 7. Add larger vertical streaks
-    // Standard geometry for major falling streaks (line segments)
     const numStreaks = Math.floor(12 * finalStreakCount);
-    const streakPositions = new Float32Array(numStreaks * 2 * 3); // 2 vertices per line, 3 coords per vertex
-    const streakRandoms = new Float32Array(numStreaks * 2 * 3);    // x, start_y, speed
+    const streakPositions = new Float32Array(numStreaks * 2 * 3);
+    const streakRandoms = new Float32Array(numStreaks * 2 * 3);
 
     for (let i = 0; i < numStreaks; i++) {
       const rx = Math.random();
       const ry = Math.random();
-      const rz = Math.random(); // speed
+      const rz = Math.random();
 
       // Top vertex
       streakPositions[i * 6 + 0] = 0;
-      streakPositions[i * 6 + 1] = 0.15; // streak length offset
+      streakPositions[i * 6 + 1] = 0.15;
       streakPositions[i * 6 + 2] = 0;
 
       streakRandoms[i * 6 + 0] = rx;
@@ -208,19 +212,15 @@ export function Lightfall({
         float progress = fract(randoms.y - uTime * 0.05 * speed);
         
         vec3 pos = position;
-        // Position X using randoms
         float px = randoms.x * 2.0 - 1.0;
         px *= uResolution.y / uResolution.x;
         
-        // Position Y using progress and vertex offset
         float py = (progress * 2.4 - 1.2) + position.y;
 
         gl_Position = vec4(px, py, 0.0, 1.0);
 
-        // Pass vertical fade down the line: top is brighter than bottom
-        vFade = (position.y + 0.15) / 0.3; // normalize to [0, 1]
+        vFade = (position.y + 0.15) / 0.3;
         
-        // Fade out at edges of canvas
         vAlpha = smoothstep(0.0, 0.2, progress) * smoothstep(1.0, 0.8, progress) * (0.2 + randoms.z * 0.6);
       }
     `;
@@ -232,7 +232,6 @@ export function Lightfall({
       varying float vFade;
 
       void main() {
-        // Draw elegant glowing streak, top is brighter
         float glow = pow(vFade, 1.5);
         gl_FragColor = vec4(uColor, glow * vAlpha * 0.6);
       }
@@ -289,11 +288,11 @@ export function Lightfall({
       window.removeEventListener("resize", resize);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [finalDensity, finalStreakCount, speed, isMobile]);
+  }, [finalDensity, finalStreakCount, speed, color, isMobile]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 -z-10 h-full w-full overflow-hidden bg-[#030712]">
-      <canvas ref={canvasRef} className="block h-full w-full opacity-60" />
+    <div ref={containerRef} className={`absolute inset-0 -z-10 h-full w-full overflow-hidden ${bgColor}`}>
+      <canvas ref={canvasRef} style={{ opacity: opacity }} className="block h-full w-full" />
     </div>
   );
 }

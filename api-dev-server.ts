@@ -42,6 +42,7 @@ const server = http.createServer((req, res) => {
   const url = new URL(req.url || "", `http://${req.headers.host}`);
   
   // Custom mock response object satisfying Vercel serverless signature
+  const originalEnd = res.end.bind(res);
   const mockedRes = Object.assign(res, {
     status(code: number) {
       res.statusCode = code;
@@ -49,11 +50,11 @@ const server = http.createServer((req, res) => {
     },
     json(body: any) {
       res.setHeader("Content-Type", "application/json");
-      res.end(JSON.stringify(body));
+      originalEnd(JSON.stringify(body));
       return this;
     },
     end() {
-      res.end();
+      originalEnd();
       return this;
     }
   });

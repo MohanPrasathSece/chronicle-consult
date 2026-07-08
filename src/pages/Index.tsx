@@ -277,10 +277,10 @@ function TopBar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="/enquiry" className="text-red-600 hover:underline font-bold">
+          <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline font-bold">
             Portal
           </a>
-          <a href="#signin" className="hover:text-slate-900">
+          <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900">
             Sign In
           </a>
         </div>
@@ -312,7 +312,7 @@ function NavigationBar() {
           <ul className="flex items-center gap-5 py-2.5 font-sans text-[13px] font-bold text-slate-800">
             {NAV.map((item, idx) => (
               <li key={idx} className="hover:text-red-600 transition-colors">
-                <a href={`#${item.toLowerCase()}`}>{item}</a>
+                <a href="/enquiry" target="_blank" rel="noopener noreferrer">{item}</a>
               </li>
             ))}
           </ul>
@@ -350,7 +350,7 @@ function InTheNewsBar() {
                   New
                 </span>
               )}
-              <a href={`#${item.name.toLowerCase()}`}>{item.name}</a>
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer">{item.name}</a>
             </div>
           ))}
         </div>
@@ -379,13 +379,13 @@ function StickyBar({ progress }: { progress: number }) {
           <ul className="flex items-center gap-5 font-sans text-[12px] font-bold text-slate-700">
             {NAV.slice(0, 6).map((n) => (
               <li key={n} className="hover:text-red-600">
-                <a href={`#${n.toLowerCase()}`}>{n}</a>
+                <a href="/enquiry" target="_blank" rel="noopener noreferrer">{n}</a>
               </li>
             ))}
           </ul>
         </nav>
         <div className="flex items-center gap-3 font-sans text-[12px] uppercase">
-          <a href="/enquiry" className="bg-red-600 text-white font-extrabold px-2.5 py-1 rounded text-xs hover:bg-red-700 transition-colors">
+          <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="bg-red-600 text-white font-extrabold px-2.5 py-1 rounded text-xs hover:bg-red-700 transition-colors">
             IC+ Portal
           </a>
         </div>
@@ -746,6 +746,7 @@ export function IndexPage() {
           cursor: pointer !important;
         }
       `}</style>
+      {/* Google Font: Plus Jakarta Sans for links */}
       <StickyBar progress={progress} />
 
       {/* header spacer for sticky bar */}
@@ -772,7 +773,7 @@ export function IndexPage() {
             
             {/* Related Article 1 */}
             <article className="border-b border-slate-200 pb-4">
-              <a href="/enquiry" className="block group">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
                   <img 
                     src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80" 
@@ -791,7 +792,7 @@ export function IndexPage() {
 
             {/* Related Article 2 */}
             <article className="border-b border-slate-200 pb-4">
-              <a href="/enquiry" className="block group">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
                   <img 
                     src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" 
@@ -810,7 +811,7 @@ export function IndexPage() {
 
             {/* Related Article 3 */}
             <article className="border-b border-slate-200 pb-4">
-              <a href="/enquiry" className="block group">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
                   <img 
                     src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=400&q=80" 
@@ -835,7 +836,7 @@ export function IndexPage() {
                 Cryptocurrency & Capital Markets
               </p>
               
-              <a href="/enquiry" className="block hover:text-red-600 group">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block hover:text-red-600 group">
                 <h2 
                   className="mt-2 font-sans text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight group-hover:text-red-600 transition-colors"
                   style={{ letterSpacing: "-0.02em" }}
@@ -850,7 +851,7 @@ export function IndexPage() {
 
               <ArticleMeta />
 
-              <a href="/enquiry" className="block group">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
                 <figure className="my-4 overflow-hidden rounded">
                   <img
                     src={heroImg}
@@ -964,7 +965,7 @@ export function IndexPage() {
 
             {/* Recommended Article 1 */}
             <article className="space-y-2 pb-4 border-b border-slate-100">
-              <a href="/enquiry" className="block group">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="w-full aspect-video rounded overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&w=400&q=80" 
@@ -983,7 +984,7 @@ export function IndexPage() {
 
             {/* Recommended Article 2 */}
             <article className="space-y-2 pb-4 border-b border-slate-100">
-              <a href="/enquiry" className="block group">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="w-full aspect-video rounded overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80" 

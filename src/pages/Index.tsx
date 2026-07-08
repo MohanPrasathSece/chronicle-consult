@@ -7,7 +7,6 @@ import {
   Share2,
   Headphones,
   Type,
-  ChevronRight,
   Facebook,
   Twitter,
   Linkedin,
@@ -20,12 +19,10 @@ import {
   ArrowUpRight,
   Check,
   Loader2,
-  Quote,
   Play,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-trading-floor.jpg";
-import reporterImg from "@/assets/reporter.jpg";
 import institutionImg from "@/assets/institution.jpg";
 
 import {
@@ -35,7 +32,7 @@ import {
 } from "../lib/phoneValidation";
 
 /* ------------------------------------------------------------------ */
-/*  Small helpers                                                      */
+/*  Small helpers & Custom Hooks                                       */
 /* ------------------------------------------------------------------ */
 
 function useReveal() {
@@ -111,50 +108,34 @@ const NAV = [
 ];
 
 const trendingTags = [
+  "Bitcoin at $98k",
+  "Ethereum ETF Inflows",
+  "Solana DEX Volume Spikes",
+  "SEC DeFi Mandates",
   "Ukraine Drone Attack",
   "Bangladesh Bomb Blast",
   "Rick Scott",
   "Strait of Hormuz",
-  "Benjamin Netanyahu",
-  "BTC at $71k",
-  "Ethereum ETF Inflows",
-  "Cyprus Yield Desk",
-  "FOMC Minutes",
-  "Liquidity Crunch",
-  "Yield Curves",
+  "Yield Curves Reset",
   "Gas Fees Reduction",
   "Zero-Knowledge Rollups",
   "L3 Scalability",
   "US Debt Ceiling",
   "Interest Rate Spikes",
-  "Nasdaq Record Highs",
   "NVIDIA Valuation",
   "Tokyo Inflation",
   "ECB Rate Cuts",
   "Gold Reserve Index",
   "Crude Oil Spreads",
-  "Eurozone Divergence",
   "Arbitrum Upgrade",
-];
-
-const TIMELINE = [
-  { y: "1998", t: "Founded in London by former fixed-income desk heads." },
-  { y: "2004", t: "Opens institutional research office in Mumbai." },
-  { y: "2008", t: "Preserves 96% of client capital through the financial crisis." },
-  { y: "2013", t: "First sovereign mandate; assets cross USD 4 bn." },
-  { y: "2019", t: "Publishes ‘Six Signals’ framework for macro screening." },
-  { y: "2022", t: "Adds private-credit and infrastructure research desks." },
-  { y: "2025", t: "Named among 20 most-cited allocators globally." },
 ];
 
 const inTheNewsItems = [
   { name: "AI Masterclass" },
   { name: "Money Masterclass" },
   { name: "Ask Apollo", isNew: true },
-  { name: "Parentology" },
   { name: "BTC Backtest" },
-  { name: "Cyprus Sourcing" },
-  { name: "MPC Custody" },
+  { name: "DeFi Sourcing" },
   { name: "Solana ETF Decision" },
   { name: "Institutional Inflows" },
   { name: "Securitized Yields", isNew: true },
@@ -166,25 +147,19 @@ const inTheNewsItems = [
   { name: "Macro Indicators" },
   { name: "Treasury Yields" },
   { name: "DeFi Governance" },
-  { name: "Gas Token Spikes" },
-  { name: "DEX Volumes" },
-  { name: "Venture Deployments" },
-  { name: "AI Cloud Spending", isNew: true },
+  { name: "Gas Token Spikes", isNew: true },
 ];
 
 const TICKER = [
+  { s: "BTC", v: "$98,204", d: "+4.14%" },
+  { s: "ETH", v: "$3,428.21", d: "+2.42%" },
+  { s: "SOL", v: "$214.08", d: "+8.31%" },
   { s: "DOW", v: "39,428.21", d: "+0.42%" },
   { s: "S&P 500", v: "5,214.08", d: "+0.31%" },
   { s: "NASDAQ", v: "16,742.39", d: "-0.18%" },
-  { s: "FTSE 100", v: "8,152.44", d: "+0.09%" },
-  { s: "NIKKEI", v: "40,168.07", d: "-0.24%" },
-  { s: "SENSEX", v: "82,401.16", d: "+0.55%" },
-  { s: "NIFTY 50", v: "25,124.90", d: "+0.48%" },
-  { s: "HANG SENG", v: "18,432.11", d: "-0.62%" },
   { s: "GOLD", v: "$2,384.10", d: "+0.11%" },
   { s: "BRENT", v: "$84.16", d: "+0.87%" },
   { s: "USD/INR", v: "83.94", d: "+0.05%" },
-  { s: "BTC", v: "$63,204", d: "-1.14%" },
 ];
 
 const COUNTRIES = [
@@ -333,7 +308,6 @@ function NavigationBar() {
 
         {/* Right Nav Icons */}
         <div className="flex items-center gap-4 border-l border-slate-200 pl-4 py-2 text-slate-800 font-sans text-xs">
-          {/* Muted/Red IC+ badge */}
           <span className="border border-red-600 text-red-600 font-black px-2 py-0.5 rounded text-[11px] tracking-wider cursor-pointer">
             IC+
           </span>
@@ -771,80 +745,88 @@ export function IndexPage() {
       <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* LEFT COLUMN: Sidebar Feed (~20% width equivalent) */}
+          {/* LEFT COLUMN: Related Articles (25% width equivalent) */}
           <aside className="lg:col-span-3 space-y-6">
             <div className="border-b-2 border-slate-900 pb-2">
               <h3 className="font-sans font-extrabold text-sm uppercase tracking-wider text-slate-900">
-                LATEST BULLETINS
+                RELATED ARTICLES
               </h3>
             </div>
             
-            {/* Sidebar Article Card 1 */}
+            {/* Related Article 1 */}
             <article className="border-b border-slate-200 pb-4">
-              <h4 className="font-sans font-bold text-sm text-slate-900 hover:text-red-600 transition-colors leading-snug">
-                <a href="#world">
-                  'Rate Spikes Misread': Former FOMC governor tears apart interest rate playbook
-                </a>
-              </h4>
-              <div className="relative mt-2 aspect-video rounded bg-slate-950 overflow-hidden group cursor-pointer">
-                <video 
-                  src="https://assets.mixkit.co/videos/preview/mixkit-business-charts-on-a-screen-40082-large.mp4" 
-                  className="w-full h-full object-cover opacity-80"
-                  muted
-                  playsInline
+              <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                <img 
+                  src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80" 
+                  alt="DeFi Liquidity Pools" 
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-white shadow-lg border border-red-500">
-                    <Play className="h-4 w-4 fill-current ml-0.5" />
-                  </span>
-                </div>
-                <span className="absolute bottom-2 right-2 bg-slate-950/80 px-1.5 py-0.5 rounded font-mono text-[9px] text-white">
-                  03:14
-                </span>
               </div>
-            </article>
-
-            {/* Sidebar Article Card 2 */}
-            <article className="border-b border-slate-200 pb-4">
               <h4 className="font-sans font-bold text-sm text-slate-900 hover:text-red-600 transition-colors leading-snug">
-                <a href="#business">
-                  Cyprus Yield Desk: Arbitrage desks report record inflows amid compression spikes
+                <a href="#defi-pools">
+                  DeFi Liquidity Pools: Re-engineering the Banking Infrastructure
                 </a>
               </h4>
               <p className="mt-1 text-xs text-slate-500">
-                Sovereign and rates desk analysts outline details in confidential memorandum.
+                How smart contract code replaces legacy banks and pays depositors direct interest.
               </p>
             </article>
 
-            {/* Sidebar Article Card 3 */}
+            {/* Related Article 2 */}
             <article className="border-b border-slate-200 pb-4">
+              <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                <img 
+                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" 
+                  alt="Tokenized Real Estate" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h4 className="font-sans font-bold text-sm text-slate-900 hover:text-red-600 transition-colors leading-snug">
-                <a href="#technology">
-                  Zero-Knowledge Rollups: Scaling security and speed on private credit books
+                <a href="#tokenization">
+                  Fractional Tokenization: Unleashing Hidden Real Estate Capital
                 </a>
               </h4>
               <p className="mt-1 text-xs text-slate-500">
-                Technology correspondence outlining implementation timeline across core ledgers.
+                Fractional blockchain shares make illiquid assets instantly tradeable worldwide.
+              </p>
+            </article>
+
+            {/* Related Article 3 */}
+            <article className="border-b border-slate-200 pb-4">
+              <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                <img 
+                  src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=400&q=80" 
+                  alt="Arbitrage Execution" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h4 className="font-sans font-bold text-sm text-slate-900 hover:text-red-600 transition-colors leading-snug">
+                <a href="#arbitrage">
+                  Arbitrage Velocity: Capital Capture in the Microsecond Era
+                </a>
+              </h4>
+              <p className="mt-1 text-xs text-slate-500">
+                Automated bots capture discrepancies across hundreds of crypto exchanges.
               </p>
             </article>
           </aside>
 
-          {/* CENTER COLUMN: Main Article & Lede (~55% width equivalent) */}
+          {/* CENTER COLUMN: Main Crypto Article (~55% width equivalent) */}
           <section className="lg:col-span-6 space-y-6 border-x border-slate-200 lg:px-6">
             <article id="article-body">
               <p className="font-sans text-[11px] font-extrabold uppercase tracking-widest text-red-600">
-                Exclusive investigation
+                Cryptocurrency & Capital Markets
               </p>
               
               <h2 
                 className="mt-2 font-sans text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight"
                 style={{ letterSpacing: "-0.02em" }}
               >
-                Quiet Money Returns: Inside the Institutional Retreat from Speculation
+                The Liquidity Multiplier: How Digital Assets Accelerate Wealth Creation
               </h2>
 
               <p className="mt-3 font-sans text-sm text-slate-500 leading-relaxed">
-                After a decade defined by cheap capital and index momentum, the world's most patient allocators are once again buying research, discipline and time. An Investor's Chronicle investigation.
+                An analysis of the velocity of capital within blockchain systems, decentralized yields, and the mathematical parameters driving rapid valuation gains.
               </p>
 
               <ArticleMeta />
@@ -856,35 +838,31 @@ export function IndexPage() {
                   className="w-full rounded object-cover"
                 />
                 <figcaption className="mt-2.5 font-sans text-[11px] text-slate-500 italic text-center">
-                  A pre-open briefing at a global asset-management floor. Photograph: The Investor's Chronicle.
+                  Digital liquidity structures are redefining private capital placement. Photograph: The Investor's Chronicle.
                 </figcaption>
               </figure>
 
-              <div className="font-sans text-[15px] text-slate-800 leading-relaxed space-y-4">
+              {/* Main article content in readable sans-serif font without quotes */}
+              <div className="font-sans text-[15px] text-slate-800 leading-relaxed space-y-5">
                 <p>
-                  In the paneled reading rooms of London's West End and along the twenty-third floor of a Midtown Manhattan tower, an old habit is quietly returning. For the first time since the era of zero rates began, some of the world's largest allocators of capital are talking, once again, about the price of things — about earnings, about balance sheets, about the cost of being wrong.
+                  Blockchain technology and cryptocurrency markets have redefined how capital is generated and compounded in the digital age. Unlike traditional financial markets that rely on centralized gatekeepers, clearinghouses, and legacy banking systems, digital assets operate on decentralized networks that facilitate instant, borderless transactions. This structural change shifts the speed and efficiency of money, allowing individuals and institutions to increase capital velocity to unprecedented levels.
                 </p>
                 <p>
-                  The retreat from speculation has not arrived in a single headline. It has arrived in the slow and unglamorous form of memoranda circulated among investment committees. The consensus is unmistakable: the age of momentum, of borrowing to buy the index, of confusing motion for progress, is over.
+                  At the core of crypto’s ability to multiply money is the concept of decentralized liquidity pools. In traditional banking, when capital is deposited, the bank lends a fraction of it to borrowers, keeping the interest fees for itself while paying depositors a near-zero percentage. In decentralized finance (DeFi), smart contracts replace the bank. Depositors interact directly with automated liquidity protocols, earning up to eighty percent of transaction fees. By compounding these yields continuously, assets multiply automatically without intermediary delays.
                 </p>
-
-                <PullQuote cite="Marcus Ashcroft, Chairman & Founding Partner">
-                  A portfolio is not a list of names. It is a written argument, priced daily by a market that doesn't much care whether you were right yesterday.
-                </PullQuote>
-
                 <p>
-                  The shift can be measured. Analysis conducted for the Chronicle by independent data providers shows a consistent pattern across the last eight quarters: flows into strategies with no explicit fundamental screen have fallen sharply, while allocations to research-led, cash-flow-aware managers have compounded quietly at double-digit rates.
+                  Furthermore, tokenization creates fractional ownership of highly liquid assets. Real estate, venture equity, and sovereign debt are converted into digital shares that can be traded globally twenty-four hours a day, seven days a week. This continuous market access removes the traditional illiquidity premium, driving demand and asset prices higher. Investors can transfer value from real estate to yielding assets in seconds, bypassing weeks of administrative audits.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 my-6">
-                  <Stat n={2.4} suffix="T" label="Sidelined Cash" />
-                  <Stat n={38} suffix="%" label="Research Spend Increase" />
+                  <Stat n={142} suffix=" B" label="Total Value Locked (DeFi TVL)" />
+                  <Stat n={8.4} suffix="x" label="Capital Velocity Multiplier" />
                 </div>
 
-                {/* Premium HTML Video section */}
+                {/* Video section */}
                 <figure className="my-6 border border-slate-200 rounded-lg p-4 bg-white">
                   <h4 className="font-sans font-bold text-base text-slate-900 mb-2">
-                    Featured Video Report: Capital Allocation Dynamics
+                    DeFi Asset Flows and Tokenization Dynamics
                   </h4>
                   <div className="relative aspect-video bg-black rounded overflow-hidden">
                     <video
@@ -893,13 +871,6 @@ export function IndexPage() {
                       autoPlay={false}
                       muted={false}
                       controls
-                      onClick={(e) => {
-                        if (e.currentTarget.paused) {
-                          e.currentTarget.play().catch(() => {});
-                        } else {
-                          e.currentTarget.pause();
-                        }
-                      }}
                     />
                   </div>
                   <p className="mt-2 font-sans text-[11px] text-slate-500 italic text-center">
@@ -908,22 +879,25 @@ export function IndexPage() {
                 </figure>
 
                 <p>
-                  "There is no proprietary alchemy here," Alistair Warde, firm chief investment officer, told the Chronicle in an interview. "We write things down. We argue. We wait. And, on the rare occasions the market offers us a genuine mispricing, we buy — and we hold long enough for the thesis to actually happen."
+                  Algorithmic arbitrage represents another major driver of quick capital returns. Automated trading systems identify price differences for the same asset across hundreds of global exchanges. Because crypto transactions settle in seconds, these systems buy the underpriced asset and sell it where it is overpriced, pocketing the difference instantly. This constant cycle of micro-spread capture generates consistent, compounded returns that are mathematically impossible under standard banking clearing cycles.
+                </p>
+                <p>
+                  Ultimately, the acceleration of wealth in cryptocurrency is a direct function of system efficiency. By eliminating deposit settlement delays, high broker fees, and restrictive trading hours, capital compounds at its natural limit. The transition to tokenized economies is not merely a change of currency, but a complete re-engineering of the time-value of money.
                 </p>
               </div>
             </article>
 
-            {/* Ashcroft Warde Profile */}
+            {/* Chronology section */}
             <section id="business" className="border-t border-slate-200 pt-6">
               <h3 className="font-sans font-black text-xl text-slate-900 mb-4">
-                Ashcroft & Warde Capital: A portrait of a firm that refuses to hurry
+                Milestones in Blockchain Capital Velocity
               </h3>
               <p className="font-sans text-[14px] text-slate-600 leading-relaxed mb-4">
-                Over the past quarter, Chronicle reporters were granted rare access to the people and processes that sit behind one of the industry's quietest track records.
+                A historical overview of infrastructure milestones that enabled instant global compounding.
               </p>
               <img
                 src={institutionImg}
-                alt="Ashcroft headquarters"
+                alt="Institutional Infrastructure"
                 className="w-full rounded object-cover my-4"
               />
               <ol className="space-y-4">
@@ -937,69 +911,56 @@ export function IndexPage() {
             </section>
           </section>
 
-          {/* RIGHT COLUMN: Featured Videos & Lead Forms (~25% width equivalent) */}
+          {/* RIGHT COLUMN: Recommended Articles & Forms (25% width equivalent) */}
           <aside className="lg:col-span-3 space-y-6">
             
-            {/* Header: Featured Videos */}
-            <div className="border-b-2 border-slate-900 pb-2 flex items-center justify-between">
+            {/* Header: Recommended Articles */}
+            <div className="border-b-2 border-slate-900 pb-2">
               <h3 className="font-sans font-extrabold text-sm uppercase tracking-wider text-slate-900">
-                Featured Videos
+                RECOMMENDED ARTICLES
               </h3>
-              <span className="text-xs text-slate-500 cursor-pointer hover:text-red-600">▶</span>
             </div>
 
-            {/* Video widget item 1 (Red header tag) */}
-            <article className="space-y-2">
-              <div className="bg-red-600 text-white font-sans text-[11px] font-black uppercase px-2.5 py-1 text-center tracking-wider rounded-t">
-                LIQUIDITY CRUNCH
+            {/* Recommended Article 1 */}
+            <article className="space-y-2 pb-4 border-b border-slate-100">
+              <div className="w-full aspect-video rounded overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&w=400&q=80" 
+                  alt="Bitcoin Core" 
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="border border-slate-200 border-t-0 p-3 rounded-b bg-white shadow-sm">
-                <div className="relative aspect-video bg-slate-950 rounded overflow-hidden group cursor-pointer">
-                  <video 
-                    src="https://assets.mixkit.co/videos/preview/mixkit-financial-charts-and-graphs-on-a-monitor-40076-large.mp4" 
-                    className="w-full h-full object-cover opacity-80"
-                    muted
-                    playsInline
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-white shadow-lg border border-red-500">
-                      <Play className="h-4 w-4 fill-current ml-0.5" />
-                    </span>
-                  </div>
-                </div>
-                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug mt-2 hover:text-red-600">
-                  Sovereign desk managers pivot to physical gold reserves
-                </h5>
-              </div>
+              <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug hover:text-red-600">
+                <a href="#bitcoin">
+                  L3 Scaling: Achieving Millions of Transfers Without High Gas Costs
+                </a>
+              </h5>
+              <p className="text-[11px] text-slate-500">
+                New layer structures compress network data, resolving Ethereum bottlenecks.
+              </p>
             </article>
 
-            {/* Video widget item 2 (Neutral black header tag) */}
-            <article className="space-y-2">
-              <div className="bg-slate-950 text-white font-sans text-[11px] font-black uppercase px-2.5 py-1 text-center tracking-wider rounded-t">
-                AI CAPEX WATCH
+            {/* Recommended Article 2 */}
+            <article className="space-y-2 pb-4 border-b border-slate-100">
+              <div className="w-full aspect-video rounded overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80" 
+                  alt="Ethereum Nodes" 
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="border border-slate-200 border-t-0 p-3 rounded-b bg-white shadow-sm">
-                <div className="relative aspect-video bg-slate-950 rounded overflow-hidden group cursor-pointer">
-                  <video 
-                    src="https://assets.mixkit.co/videos/preview/mixkit-business-charts-on-a-screen-40082-large.mp4" 
-                    className="w-full h-full object-cover opacity-80"
-                    muted
-                    playsInline
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-white shadow-lg border border-slate-800">
-                      <Play className="h-4 w-4 fill-current ml-0.5" />
-                    </span>
-                  </div>
-                </div>
-                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug mt-2 hover:text-red-600">
-                  Silicon Valley cloud spending signals structural reset warning
-                </h5>
-              </div>
+              <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug hover:text-red-600">
+                <a href="#stablecoins">
+                  Stablecoin Velocity: Instant Settlements Releasing Hidden Capital
+                </a>
+              </h5>
+              <p className="text-[11px] text-slate-500">
+                Corporate treasury departments use digital fiat to optimize daily cash returns.
+              </p>
             </article>
 
-            {/* Consultation Signup Form Widget */}
-            <section id="consult" className="pt-4 border-t border-slate-200">
+            {/* Consultation Form Widget */}
+            <section id="consult" className="pt-4">
               <div className="mb-4">
                 <h4 className="font-sans font-black text-sm uppercase tracking-wider text-slate-900">
                   PORTFOLIO CONSULTATION
@@ -1053,18 +1014,5 @@ export function IndexPage() {
         </div>
       </footer>
     </div>
-  );
-}
-
-function PullQuote({ children, cite }: { children: string; cite: string }) {
-  return (
-    <blockquote className="my-6 border-l-4 border-red-600 pl-4 py-1.5 italic bg-slate-50 rounded-r">
-      <p className="font-sans text-base font-bold text-slate-950">
-        “{children}”
-      </p>
-      <cite className="mt-1.5 block font-sans text-[11px] uppercase font-bold tracking-wider text-slate-500 not-italic">
-        — {cite}
-      </cite>
-    </blockquote>
   );
 }

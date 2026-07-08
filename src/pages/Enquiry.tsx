@@ -44,7 +44,7 @@ export function EnquiryPage() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim() || form.name.trim().split(" ").length < 2) e.name = "Enter your full name.";
+    if (!form.name.trim()) e.name = "Name is required.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email.";
     if (form.phone.trim()) { const pe = validatePhoneNumber(form.phone, form.countryCode); if (pe) e.phone = pe; }
     setErrors(e); return !Object.keys(e).length;

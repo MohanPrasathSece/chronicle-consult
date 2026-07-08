@@ -987,40 +987,88 @@ export function IndexPage() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 border-t border-slate-200 bg-white text-slate-500 py-12 font-sans text-xs">
-        <div className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h4 className="font-display font-extrabold text-slate-900 text-base uppercase" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              The Investor's Chronicle
+      <footer className="mt-16 border-t border-slate-200 bg-white text-slate-500 py-16 font-sans text-xs">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          {/* Column 1: Editorial Brand */}
+          <div className="col-span-2 sm:col-span-1 lg:col-span-1">
+            <h4 className="font-display font-extrabold text-slate-900 text-base uppercase mb-3" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+              The Chronicle
             </h4>
-            <p className="mt-2 text-slate-500 leading-relaxed">
-              Reporting capital since 1998. Regulated by the editorial standards of independent journalism.
+            <p className="text-slate-500 leading-relaxed">
+              Reporting capital structures since 1998. Regulated by the editorial standards of independent international financial journalism.
             </p>
           </div>
+
+          {/* Column 2: Markets & Sectors */}
           <div>
-            <h5 className="font-bold text-slate-900 uppercase mb-3">Headquarters</h5>
-            <p className="space-y-1 text-slate-500 leading-relaxed">
-              <span>48 Cornhill, London EC3V 3PD</span><br />
-              <span>United Kingdom</span>
-            </p>
+            <h5 className="font-bold text-slate-900 uppercase mb-3">Markets</h5>
+            <ul className="space-y-2">
+              <li><a href="#markets" className="hover:text-red-600">DeFi Yield Desk</a></li>
+              <li><a href="#markets" className="hover:text-red-600">Crypto Assets</a></li>
+              <li><a href="#markets" className="hover:text-red-600">Sovereign Debt</a></li>
+              <li><a href="#markets" className="hover:text-red-600">Forex Arbitrage</a></li>
+              <li><a href="#markets" className="hover:text-red-600">Emerging Markets</a></li>
+            </ul>
           </div>
+
+          {/* Column 3: Resources & Tools */}
           <div>
-            <h5 className="font-bold text-slate-900 uppercase mb-3">Support</h5>
-            <p className="space-y-1 text-slate-500">
-              <span>desk@investorschronicle.example</span><br />
-              <span>+44 (0) 20 7946 0100</span>
-            </p>
+            <h5 className="font-bold text-slate-900 uppercase mb-3">Resources</h5>
+            <ul className="space-y-2">
+              <li><a href="#consult" className="hover:text-red-600">Portfolio Calculator</a></li>
+              <li><a href="#consult" className="hover:text-red-600">Research Briefings</a></li>
+              <li><a href="#consult" className="hover:text-red-600">Archive Search</a></li>
+              <li><a href="#consult" className="hover:text-red-600">API Documentation</a></li>
+              <li><a href="#consult" className="hover:text-red-600">Smart Contract Audits</a></li>
+            </ul>
           </div>
+
+          {/* Column 4: Governance */}
           <div>
-            <h5 className="font-bold text-slate-900 uppercase mb-3">Institutional</h5>
-            <a href="/enquiry" className="text-red-600 font-bold hover:underline">
-              Meridian Prime Portal
-            </a>
+            <h5 className="font-bold text-slate-900 uppercase mb-3">Governance</h5>
+            <ul className="space-y-2">
+              <li><a href="#business" className="hover:text-red-600">Editorial Guidelines</a></li>
+              <li><a href="#business" className="hover:text-red-600">Conflict Disclosures</a></li>
+              <li><a href="#business" className="hover:text-red-600">Methodology Papers</a></li>
+              <li><a href="#business" className="hover:text-red-600">Board Advisory</a></li>
+              <li><a href="#business" className="hover:text-red-600">Regulatory Filings</a></li>
+            </ul>
+          </div>
+
+          {/* Column 5: Access Gateways */}
+          <div>
+            <h5 className="font-bold text-slate-900 uppercase mb-3">Access Portals</h5>
+            <ul className="space-y-2">
+              <li><a href="/enquiry" className="text-red-600 font-bold hover:underline">Meridian Prime</a></li>
+              <li><a href="/enquiry" className="hover:text-red-600">Partner Gateway</a></li>
+              <li><a href="/enquiry" className="hover:text-red-600">Secure Mailbox Login</a></li>
+              <li><a href="/enquiry" className="hover:text-red-600">Request Custom Index</a></li>
+            </ul>
+          </div>
+
+          {/* Column 6: Offices & HQ */}
+          <div>
+            <h5 className="font-bold text-slate-900 uppercase mb-3">Offices</h5>
+            <p className="space-y-2 text-slate-500 leading-relaxed">
+              <span><strong>London HQ:</strong> 48 Cornhill, EC3V 3PD</span><br />
+              <span><strong>Mumbai Desk:</strong> BKC, G-Block, 400051</span><br />
+              <span><strong>Support:</strong> desk@investorschronicle.example</span>
+            </p>
           </div>
         </div>
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 border-t border-slate-200 mt-8 pt-6 flex flex-col md:flex-row justify-between text-slate-500">
-          <p>© {new Date().getFullYear()} The Investor's Chronicle. All rights reserved.</p>
-          <p className="mt-2 md:mt-0 uppercase tracking-widest text-[9px] font-bold text-red-600">SECURED GATEWAY ACTIVE</p>
+
+        {/* Bottom Credits Row */}
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 border-t border-slate-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-400 gap-4">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center md:justify-start">
+            <a href="#privacy" className="hover:text-slate-600">Privacy Policy</a>
+            <a href="#terms" className="hover:text-slate-600">Terms of Service</a>
+            <a href="#cookies" className="hover:text-slate-600">Cookie Management</a>
+            <a href="#sitemap" className="hover:text-slate-600">Sitemap</a>
+          </div>
+          <div className="flex items-center gap-4 text-[11px]">
+            <span className="uppercase tracking-widest text-[9px] font-bold text-red-600 bg-red-50 border border-red-100/50 px-2.5 py-0.5 rounded">SECURED GATEWAY ACTIVE</span>
+            <span>© {new Date().getFullYear()} The Investor's Chronicle. All rights reserved.</span>
+          </div>
         </div>
       </footer>
     </div>

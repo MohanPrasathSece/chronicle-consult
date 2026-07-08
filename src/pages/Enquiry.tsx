@@ -124,15 +124,15 @@ export function EnquiryPage() {
 
       <section className="relative overflow-hidden min-h-[500px] flex items-center justify-center">
         {/* Background Particles Animation */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-50">
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-90">
           <Particles
-            particleColors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
-            particleCount={250}
-            particleSpread={12}
-            speed={0.15}
-            particleBaseSize={100}
+            particleColors={["#ffffff", "#00f0ff", "#3b82f6", "#a855f7"]}
+            particleCount={120}
+            particleSpread={15}
+            speed={0.12}
+            particleBaseSize={200}
             moveParticlesOnHover={true}
-            alphaParticles={true}
+            alphaParticles={false}
             disableRotation={false}
           />
         </div>

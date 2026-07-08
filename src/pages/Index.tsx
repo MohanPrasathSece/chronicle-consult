@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-trading-floor.jpg";
-import institutionImg from "@/assets/institution.jpg";
 import video1 from "@/assets/WhatsApp Video 2026-07-07 at 10.48.37 (1).mp4";
 import video2 from "@/assets/WhatsApp Video 2026-07-07 at 10.48.38.mp4";
 
@@ -827,6 +826,82 @@ export function IndexPage() {
                 Automated bots capture discrepancies across hundreds of crypto exchanges.
               </p>
             </article>
+
+            {/* Related Article 4 */}
+            <article className="border-b border-slate-200 pb-4">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&w=400&q=80" 
+                    alt="Yield Farming Strategies" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="font-sans font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
+                  Yield Farming 2.0: Automated Strategies That Outperform Manual Trading
+                </h4>
+              </a>
+              <p className="mt-1 text-xs text-slate-500">
+                Smart routing algorithms rotate capital across 200+ protocols chasing peak APY windows.
+              </p>
+            </article>
+
+            {/* Related Article 5 */}
+            <article className="border-b border-slate-200 pb-4">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1642104704074-907c0698cbd9?auto=format&fit=crop&w=400&q=80" 
+                    alt="Stablecoin Treasury" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="font-sans font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
+                  Stablecoin Treasury: How Corporations Earn 10% on Idle Cash Reserves
+                </h4>
+              </a>
+              <p className="mt-1 text-xs text-slate-500">
+                Dollar-pegged tokens turn dormant corporate treasuries into compounding engines.
+              </p>
+            </article>
+
+            {/* Related Article 6 */}
+            <article className="border-b border-slate-200 pb-4">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=400&q=80" 
+                    alt="Cross-Chain Bridges" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="font-sans font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
+                  Cross-Chain Bridges: The Infrastructure Connecting Isolated Blockchain Economies
+                </h4>
+              </a>
+              <p className="mt-1 text-xs text-slate-500">
+                Interoperability protocols enable seamless capital flow between incompatible networks.
+              </p>
+            </article>
+
+            {/* Related Article 7 */}
+            <article className="border-b border-slate-200 pb-4">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1666625519702-e9a8957f8788?auto=format&fit=crop&w=400&q=80" 
+                    alt="DAO Governance" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="font-sans font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
+                  DAO Governance: Community-Managed Treasuries Outperforming Traditional Funds
+                </h4>
+              </a>
+              <p className="mt-1 text-xs text-slate-500">
+                Decentralized organizations cut management fees and accelerate capital compounding.
+              </p>
+            </article>
           </aside>
 
           {/* CENTER COLUMN: Main Crypto Article (~55% width equivalent) */}
@@ -926,31 +1001,44 @@ export function IndexPage() {
                 <p>
                   Ultimately, the acceleration of wealth in cryptocurrency is a direct function of system efficiency. By eliminating deposit settlement delays, high broker fees, and restrictive trading hours, capital compounds at its natural limit. The transition to tokenized economies is not merely a change of currency, but a complete re-engineering of the time-value of money.
                 </p>
+
+                <p>
+                  Staking mechanisms further amplify the compounding effect. Proof-of-stake networks such as Ethereum, Solana, and Cardano reward participants who lock their tokens as network validators. Annual yields from staking typically range from four to fourteen percent, depending on network congestion and total staked supply. Unlike traditional fixed-income products that pay quarterly or semi-annually, staking rewards accrue every few seconds, enabling continuous reinvestment at a rate that traditional bonds cannot match. Validators also benefit from priority transaction fees during periods of high network activity, creating an additional revenue layer that scales with adoption.
+                </p>
+
+                <p>
+                  Yield farming, the practice of moving capital between different DeFi protocols to capture the highest available return, has emerged as one of the most aggressive strategies for wealth multiplication. Sophisticated yield farmers deploy automated strategies that scan hundreds of protocols simultaneously, shifting funds within minutes to wherever the annual percentage yield is highest. During bull markets, these yields can exceed one hundred percent annualized, though they carry proportional risks from smart contract exploits and impermanent loss. The key innovation is that yield farming turns passive capital into an active, continuously optimizing engine, eliminating the idle periods that erode returns in traditional finance.
+                </p>
+
+                <p>
+                  Cross-chain bridge technology has further expanded the opportunity set. Bridges allow tokens to flow seamlessly between otherwise incompatible blockchains, opening vast new pools of liquidity. An investor can purchase an asset on Ethereum, bridge it to Arbitrum for lower fees, deploy it into a Solana-based lending protocol, and collateralize it on Avalanche, all within a single trading session. This interoperability eliminates the geographic and technological silos that historically fragmented capital markets. The result is a single, interconnected global liquidity network that operates without closing bells or national borders.
+                </p>
+
+                <p>
+                  Stablecoin adoption represents perhaps the most underappreciated catalyst for crypto wealth generation. Dollar-pegged tokens like USDC, USDT, and DAI now facilitate over twelve trillion dollars in annual transaction volume, surpassing many traditional payment networks. Corporations hold stablecoins to optimize cash management, earning five to ten percent yields on what would otherwise be idle treasury reserves. The speed of stablecoin settlement, often completing in under two seconds, unlocks capital that was previously trapped in three-day clearing cycles. This velocity advantage alone generates hundreds of millions in additional compounding returns across the ecosystem.
+                </p>
+
+                <p>
+                  The rise of non-fungible tokens and digital collectibles has opened an entirely new asset class for portfolio diversification. While early NFT markets were driven by speculative art trading, the technology has matured into a framework for tokenizing intellectual property, licensing rights, music royalties, and even carbon credits. Institutional investors are now building NFT portfolios that generate passive royalty income from secondary sales, creating perpetual revenue streams that compound alongside traditional crypto holdings. The programmable nature of NFT smart contracts means that royalty percentages, revenue splits, and governance rights are all enforced automatically, removing administrative overhead entirely.
+                </p>
+
+                <p>
+                  Regulatory clarity, rather than hindering growth, has become a powerful accelerant for institutional capital flows into digital assets. Jurisdictions such as Switzerland, Singapore, the United Arab Emirates, and the European Union have established comprehensive frameworks that give pension funds, endowments, and sovereign wealth funds the legal certainty to allocate to crypto. The approval of spot Bitcoin and Ethereum exchange-traded funds in the United States in 2024 unlocked over fifty billion dollars in new institutional inflows within twelve months. These regulated vehicles provide familiar custody and compliance wrappers around an inherently high-yield asset class, dramatically lowering the barrier to entry for conservative allocators.
+                </p>
+
+                <p>
+                  Layer-two scaling solutions have addressed the historical bottleneck of high transaction fees on base-layer blockchains. Networks like Lightning Network, Optimism, Arbitrum, and zkSync compress thousands of transactions into single on-chain batches, reducing per-transaction costs from dollars to fractions of a cent. This cost reduction is critical because it makes micro-compounding economically viable. Where previously the gas cost of reinvesting a small yield harvest might exceed the yield itself, layer-two networks ensure that even the smallest returns can be automatically recycled into productive positions.
+                </p>
+
+                <p>
+                  Decentralized autonomous organizations have introduced a governance model that allows communities to collectively manage treasury assets worth billions. DAOs like MakerDAO, Aave, and Lido deploy community-owned capital across lending protocols, liquidity pools, and infrastructure investments, distributing profits proportionally to token holders. This model eliminates the management fees charged by traditional fund managers, which typically consume one to two percent of assets annually. By removing this structural drag, DAO-managed capital compounds significantly faster over multi-year horizons, delivering returns that compound into generational wealth.
+                </p>
+
+                <p>
+                  The convergence of artificial intelligence with blockchain infrastructure is creating an entirely new frontier for automated wealth generation. AI-driven trading algorithms can process on-chain data, social sentiment, macroeconomic indicators, and technical signals simultaneously, executing strategies that no human trader could replicate. Machine learning models continuously refine their parameters based on real-time market feedback, improving their precision with every trade cycle. When combined with the instant settlement and programmable logic of smart contracts, AI-crypto systems operate as autonomous wealth engines that require minimal human oversight while delivering institutional-grade risk-adjusted returns.
+                </p>
               </div>
             </article>
-
-            {/* Chronology section */}
-            <section id="business" className="border-t border-slate-200 pt-6">
-              <h3 className="font-sans font-black text-xl text-slate-900 mb-4">
-                Milestones in Blockchain Capital Velocity
-              </h3>
-              <p className="font-sans text-[14px] text-slate-600 leading-relaxed mb-4">
-                A historical overview of infrastructure milestones that enabled instant global compounding.
-              </p>
-              <img
-                src={institutionImg}
-                alt="Institutional Infrastructure"
-                className="w-full rounded object-cover my-4"
-              />
-              <ol className="space-y-4">
-                {TIMELINE.slice(0, 4).map((t, idx) => (
-                  <li key={idx} className="border-t border-slate-100 pt-3 flex gap-4">
-                    <span className="font-mono text-xs text-red-600 font-bold">{t.y}</span>
-                    <p className="font-sans text-xs text-slate-700 leading-normal">{t.t}</p>
-                  </li>
-                ))}
-              </ol>
-            </section>
           </section>
 
           {/* RIGHT COLUMN: Recommended Articles & Forms (25% width equivalent) */}
@@ -998,6 +1086,101 @@ export function IndexPage() {
               </a>
               <p className="text-[11px] text-slate-500">
                 Corporate treasury departments use digital fiat to optimize daily cash returns.
+              </p>
+            </article>
+
+            {/* Recommended Article 3 */}
+            <article className="space-y-2 pb-4 border-b border-slate-100">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=400&q=80" 
+                    alt="AI Trading Systems" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug group-hover:text-red-600 transition-colors mt-2">
+                  AI-Driven Trading: Machine Learning Models That Never Sleep
+                </h5>
+              </a>
+              <p className="text-[11px] text-slate-500">
+                Neural networks process on-chain sentiment and macro data to execute strategies autonomously.
+              </p>
+            </article>
+
+            {/* Recommended Article 4 */}
+            <article className="space-y-2 pb-4 border-b border-slate-100">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?auto=format&fit=crop&w=400&q=80" 
+                    alt="Regulatory Framework" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug group-hover:text-red-600 transition-colors mt-2">
+                  Regulatory Green Light: How ETF Approvals Unlocked $50B in Institutional Flows
+                </h5>
+              </a>
+              <p className="text-[11px] text-slate-500">
+                Compliance frameworks in the US and EU are accelerating sovereign wealth fund crypto allocations.
+              </p>
+            </article>
+
+            {/* Recommended Article 5 */}
+            <article className="space-y-2 pb-4 border-b border-slate-100">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1645731504532-0b0e41ae6603?auto=format&fit=crop&w=400&q=80" 
+                    alt="NFT Royalties" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug group-hover:text-red-600 transition-colors mt-2">
+                  NFT Royalty Income: Building Perpetual Revenue Streams From Digital Assets
+                </h5>
+              </a>
+              <p className="text-[11px] text-slate-500">
+                Smart contracts enforce royalty payments on every secondary sale automatically.
+              </p>
+            </article>
+
+            {/* Recommended Article 6 */}
+            <article className="space-y-2 pb-4 border-b border-slate-100">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=400&q=80" 
+                    alt="Layer 2 Networks" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug group-hover:text-red-600 transition-colors mt-2">
+                  Zero-Knowledge Rollups: Compressing 10,000 Transactions Into One
+                </h5>
+              </a>
+              <p className="text-[11px] text-slate-500">
+                ZK-proof technology makes micro-compounding economically viable at sub-cent costs.
+              </p>
+            </article>
+
+            {/* Recommended Article 7 */}
+            <article className="space-y-2 pb-4 border-b border-slate-100">
+              <a href="/enquiry" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1622630998477-20aa696ecb05?auto=format&fit=crop&w=400&q=80" 
+                    alt="Crypto Staking" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug group-hover:text-red-600 transition-colors mt-2">
+                  Proof-of-Stake Yields: Earning 14% APY by Securing the Network
+                </h5>
+              </a>
+              <p className="text-[11px] text-slate-500">
+                Validators earn continuous block rewards that compound every few seconds.
               </p>
             </article>
 

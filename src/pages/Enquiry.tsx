@@ -69,7 +69,12 @@ export function EnquiryPage() {
   const cfg = countryConfigs[form.countryCode] || countryConfigs.GEN;
 
   return (
-    <div className="min-h-screen w-full bg-white antialiased overflow-x-hidden" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div className="min-h-screen w-full bg-[#030712] text-white antialiased overflow-x-hidden relative" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+      {/* Dynamic Glowing Mesh Background Orbs */}
+      <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] -z-10 pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
+      <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[130px] -z-10 pointer-events-none animate-pulse" style={{ animationDuration: "12s" }} />
+      <div className="absolute bottom-[10%] left-[20%] w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[160px] -z-10 pointer-events-none" />
+
       <style>{`
         a, button, [role="button"] { cursor: pointer !important; }
         input, textarea, select { cursor: text !important; }
@@ -82,40 +87,48 @@ export function EnquiryPage() {
         .fade-up-d2 { animation: fadeUp 0.7s 0.2s ease-out both; }
         .fade-up-d3 { animation: fadeUp 0.7s 0.3s ease-out both; }
         .fade-in { animation: fadeIn 0.5s ease-out both; }
+        
+        /* Glassmorphism Styles */
+        .glass-panel {
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel-hover:hover {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+        }
       `}</style>
 
       {/* ── HEADER ── */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+      <header className="sticky top-0 z-50 backdrop-blur-xl border-b border-white/10 bg-[#030712]/75">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2.5 group">
-            <div className="h-8 w-8 rounded-lg bg-black flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
               <Sparkles className="h-4 w-4 text-white" />
             </div>
-            <span className="font-heading font-extrabold text-[17px] text-gray-900 tracking-tight">VortexCrypto</span>
+            <span className="font-heading font-extrabold text-[17px] text-white tracking-tight">VortexCrypto</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-[13px] font-semibold text-gray-500">
-            <a href="#features" className="hover:text-gray-900 transition-colors">Features</a>
-            <a href="#stats" className="hover:text-gray-900 transition-colors">Performance</a>
-            <a href="#contact" className="hover:text-gray-900 transition-colors">Contact</a>
+          <nav className="hidden md:flex items-center gap-8 text-[13px] font-semibold text-gray-400">
+            <a href="#features" className="hover:text-white transition-colors">Features</a>
+            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
           </nav>
-          <a href="#contact" className="bg-gray-900 hover:bg-gray-800 text-white text-[13px] font-bold px-5 py-2.5 rounded-full transition-all shadow-sm">
+          <a href="#contact" className="bg-blue-600 hover:bg-blue-500 text-white text-[13px] font-bold px-5 py-2.5 rounded-full transition-all shadow-lg shadow-blue-500/20 hover:scale-[1.02]">
             Get Started
           </a>
         </div>
       </header>
 
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%)' }}>
-        {/* Decorative gradient orbs */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl -z-0 pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-violet-500/10 rounded-full blur-3xl -z-0 pointer-events-none" />
-
+      <section className="relative overflow-hidden">
         <div className="relative z-10 mx-auto max-w-4xl px-6 pt-24 pb-20 text-center">
           {/* Badge */}
-          <div className="fade-up inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 text-[12px] font-semibold text-gray-300 mb-8 backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+          <div className="fade-up inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-[12px] font-semibold text-gray-300 mb-8 backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-green-450 animate-pulse" style={{ backgroundColor: "#22c55e" }} />
             {leadsCount !== null ? `${leadsCount.toLocaleString()} investors onboarded` : "Now accepting new allocations"}
-            <ChevronRight className="h-3 w-3 text-gray-400" />
+            <ChevronRight className="h-3 w-3 text-gray-500" />
           </div>
 
           <h1 className="fade-up-d1 text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white leading-[1.1] tracking-tight max-w-3xl mx-auto">
@@ -125,24 +138,24 @@ export function EnquiryPage() {
           </h1>
 
           <p className="fade-up-d2 mt-6 text-gray-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-            Automated yield strategies, real-time arbitrage execution, and institutional-grade portfolio management — in one clean platform.
+            Automated yield strategies, real-time arbitrage execution, and institutional-grade portfolio management — in one clean glassmorphic portal.
           </p>
 
           <div className="fade-up-d3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="#contact" className="bg-white hover:bg-gray-100 text-gray-900 font-bold px-8 py-4 rounded-full text-sm transition-all shadow-lg inline-flex items-center gap-2">
+            <a href="#contact" className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-full text-sm transition-all shadow-lg shadow-blue-500/20 inline-flex items-center gap-2 hover:scale-[1.02]">
               Start Free Trial <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#features" className="text-gray-400 hover:text-white font-semibold text-sm transition-colors inline-flex items-center gap-2 px-6 py-4 border border-white/15 rounded-full">
+            <a href="#features" className="text-gray-300 hover:text-white font-semibold text-sm transition-colors inline-flex items-center gap-2 px-6 py-4 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white/10">
               See how it works <ChevronRight className="h-4 w-4" />
             </a>
           </div>
 
           {/* Trust logos */}
-          <div className="mt-16 pt-8 border-t border-white/10">
+          <div className="mt-16 pt-8 border-t border-white/5">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-500 mb-5">Trusted by teams at</p>
             <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
               {LOGOS.map((name, i) => (
-                <span key={i} className="text-[13px] font-bold text-gray-600 tracking-wide">{name}</span>
+                <span key={i} className="text-[13px] font-bold text-gray-500 hover:text-gray-300 transition-colors tracking-wide">{name}</span>
               ))}
             </div>
           </div>
@@ -150,14 +163,14 @@ export function EnquiryPage() {
       </section>
 
       {/* ── SECTION 2: FEATURES ── */}
-      <section id="features" className="bg-slate-50 border-y border-slate-200">
+      <section id="features" className="border-y border-white/5">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <div className="text-center mb-16">
-            <p className="text-[12px] font-bold uppercase tracking-widest text-blue-600 mb-3">Platform</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            <p className="text-[12px] font-bold uppercase tracking-widest text-blue-400 mb-3">Platform</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               Everything you need to grow
             </h2>
-            <p className="mt-3 text-gray-500 text-sm max-w-md mx-auto">Three core engines working together to maximise your returns.</p>
+            <p className="mt-3 text-gray-400 text-sm max-w-md mx-auto">Three core engines working together to maximise your returns.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -168,7 +181,7 @@ export function EnquiryPage() {
                 desc: "Smart contracts harvest and reinvest across 50+ DeFi protocols continuously. No manual intervention needed.",
                 metric: "6.8 – 14.1%",
                 metricLabel: "Average APY",
-                accent: "bg-blue-50 text-blue-600 border-blue-100",
+                accent: "bg-blue-500/10 text-blue-400 border-blue-500/20",
               },
               {
                 icon: <Zap className="h-5 w-5" />,
@@ -176,7 +189,7 @@ export function EnquiryPage() {
                 desc: "Proprietary bots capture price gaps across 200+ exchanges in milliseconds, converting latency into profit.",
                 metric: "200+",
                 metricLabel: "Exchanges monitored",
-                accent: "bg-violet-50 text-violet-600 border-violet-100",
+                accent: "bg-violet-500/10 text-violet-400 border-violet-500/20",
               },
               {
                 icon: <Shield className="h-5 w-5" />,
@@ -184,18 +197,18 @@ export function EnquiryPage() {
                 desc: "Fractional ownership of real estate, bonds, and commodities — settling globally in under 5 seconds.",
                 metric: "$2.4B+",
                 metricLabel: "Assets tokenized",
-                accent: "bg-emerald-50 text-emerald-600 border-emerald-100",
+                accent: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
               },
             ].map((f, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-200 p-7 hover:shadow-lg hover:border-gray-300 transition-all duration-300 group">
+              <div key={i} className="glass-panel glass-panel-hover rounded-2xl p-7 transition-all duration-300 group">
                 <div className={`h-11 w-11 rounded-xl ${f.accent} border flex items-center justify-center mb-5`}>
                   {f.icon}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{f.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-6">{f.desc}</p>
-                <div className="pt-4 border-t border-gray-100">
-                  <div className="text-2xl font-extrabold text-gray-900">{f.metric}</div>
-                  <div className="text-xs text-gray-400 mt-0.5">{f.metricLabel}</div>
+                <h3 className="text-lg font-bold text-white mb-2">{f.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed mb-6">{f.desc}</p>
+                <div className="pt-4 border-t border-white/5">
+                  <div className="text-2xl font-extrabold text-white">{f.metric}</div>
+                  <div className="text-xs text-gray-500 mt-0.5">{f.metricLabel}</div>
                 </div>
               </div>
             ))}
@@ -203,28 +216,28 @@ export function EnquiryPage() {
         </div>
       </section>
 
-      {/* ── SECTION 3: CONTACT FORM ── */}
-      <section id="contact" className="bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-24">
+      {/* ── SECTION 3: CONTACT FORM (DARK GLASS) ── */}
+      <section id="contact" className="relative overflow-hidden">
+        <div className="relative z-10 mx-auto max-w-5xl px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
             {/* Left info */}
             <div className="lg:col-span-2 space-y-6">
-              <p className="text-[12px] font-bold uppercase tracking-widest text-blue-600">Get started</p>
-              <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              <p className="text-[12px] font-bold uppercase tracking-widest text-blue-400">Get started</p>
+              <h2 className="text-3xl font-extrabold text-white tracking-tight leading-tight">
                 Schedule your personalised demo
               </h2>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-gray-400 leading-relaxed">
                 Tell us about your goals. Our team will prepare a custom onboarding session within 60 minutes.
               </p>
 
               <div className="space-y-4 pt-4">
                 {[
-                  { icon: <Shield className="h-4 w-4 text-gray-400" />, text: "AES-256 encrypted data vaults" },
-                  { icon: <Check className="h-4 w-4 text-gray-400" />, text: "Mandate confirmation in 60 min" },
-                  { icon: <Lock className="h-4 w-4 text-gray-400" />, text: "No commitment required" },
+                  { icon: <Shield className="h-4 w-4 text-blue-400" />, text: "AES-256 encrypted data vaults" },
+                  { icon: <Check className="h-4 w-4 text-blue-400" />, text: "Mandate confirmation in 60 min" },
+                  { icon: <Lock className="h-4 w-4 text-blue-400" />, text: "No commitment required" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm text-gray-500">
-                    <div className="h-8 w-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">{item.icon}</div>
+                  <div key={i} className="flex items-center gap-3 text-sm text-gray-400">
+                    <div className="h-8 w-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10">{item.icon}</div>
                     {item.text}
                   </div>
                 ))}
@@ -234,65 +247,65 @@ export function EnquiryPage() {
             {/* Right form */}
             <div className="lg:col-span-3">
               {status === "success" ? (
-                <div className="bg-white rounded-2xl border border-gray-200 p-10 text-center shadow-sm fade-in">
-                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-50 border border-green-200 text-green-500 mb-5">
+                <div className="glass-panel rounded-2xl p-10 text-center shadow-2xl fade-in">
+                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20 text-green-400 mb-5">
                     <Check className="h-7 w-7" />
                   </div>
-                  <h3 className="text-xl font-extrabold text-gray-900 mb-2">You're all set!</h3>
-                  <p className="text-sm text-gray-500 max-w-sm mx-auto leading-relaxed">
+                  <h3 className="text-xl font-extrabold text-white mb-2">You're all set!</h3>
+                  <p className="text-sm text-gray-400 max-w-sm mx-auto leading-relaxed">
                     Your enquiry has been received. An onboarding specialist will reach you within the hour.
                   </p>
-                  <div className="mt-6 inline-block bg-gray-50 border border-gray-200 rounded-full px-5 py-2 font-mono text-xs text-gray-600">
-                    REF: <span className="text-blue-600 font-bold">VX-{Math.floor(100000 + Math.random() * 899999)}</span>
+                  <div className="mt-6 inline-block bg-white/5 border border-white/10 rounded-full px-5 py-2 font-mono text-xs text-gray-300">
+                    REF: <span className="text-blue-400 font-bold">VX-{Math.floor(100000 + Math.random() * 899999)}</span>
                   </div>
                 </div>
               ) : (
-                <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
+                <div className="glass-panel rounded-2xl p-8 shadow-2xl">
                   {errors.general && (
-                    <div className="mb-5 rounded-xl bg-red-50 border border-red-200 p-3 text-xs text-red-600 font-medium text-center">{errors.general}</div>
+                    <div className="mb-5 rounded-xl bg-red-500/10 border border-red-500/20 p-3 text-xs text-red-400 font-medium text-center">{errors.general}</div>
                   )}
 
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-gray-500 mb-1.5">Full Name *</label>
+                        <label className="block text-xs font-semibold text-gray-400 mb-1.5">Full Name *</label>
                         <input type="text" required value={form.name} onChange={set("name")} placeholder="Alexandra Chen"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" />
-                        {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all" />
+                        {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-gray-500 mb-1.5">Email *</label>
+                        <label className="block text-xs font-semibold text-gray-400 mb-1.5">Email *</label>
                         <input type="email" required value={form.email} onChange={set("email")} placeholder="alex@fund.com"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" />
-                        {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all" />
+                        {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-gray-500 mb-1.5">Phone Number</label>
+                      <label className="block text-xs font-semibold text-gray-400 mb-1.5">Phone Number</label>
                       <div className="flex gap-3">
                         <select value={form.countryCode} onChange={set("countryCode")}
-                          className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-3 text-sm text-gray-800 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all appearance-none min-w-[115px]"
+                          className="bg-slate-900 border border-white/10 rounded-xl px-3 py-3 text-sm text-white outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all appearance-none min-w-[115px]"
                           style={{ backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 10px center", backgroundSize: "14px", paddingRight: "30px" }}>
-                          {COUNTRIES.map(c => <option key={c.code} value={c.code}>{c.label}</option>)}
+                          {COUNTRIES.map(c => <option key={c.code} value={c.code} className="bg-slate-900">{c.label}</option>)}
                         </select>
                         <input type="tel" value={form.phone} onChange={set("phone")} placeholder={cfg.placeholder}
-                          className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all" />
+                          className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all" />
                       </div>
-                      {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
+                      {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone}</p>}
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-gray-500 mb-1.5">Message</label>
+                      <label className="block text-xs font-semibold text-gray-400 mb-1.5">Message</label>
                       <textarea rows={3} value={form.message} onChange={set("message")} placeholder="Tell us about your investment goals..."
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all resize-none" />
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all resize-none" />
                     </div>
 
                     <button type="submit" disabled={status === "loading"}
-                      className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gray-900 hover:bg-gray-800 text-white py-3.5 text-sm font-bold transition-all disabled:opacity-60 shadow-sm">
+                      className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white py-3.5 text-sm font-bold transition-all disabled:opacity-60 shadow-lg shadow-blue-500/20 hover:scale-[1.02]">
                       {status === "loading" ? <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</> : <>Schedule Demo <ArrowRight className="h-4 w-4" /></>}
                     </button>
-                    <p className="text-center text-[11px] text-gray-400">No spam. Unsubscribe anytime.</p>
+                    <p className="text-center text-[11px] text-gray-500">No spam. Unsubscribe anytime.</p>
                   </form>
                 </div>
               )}
@@ -302,15 +315,15 @@ export function EnquiryPage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="bg-slate-50 border-t border-slate-200 py-10">
+      <footer className="py-10 border-t border-white/5 bg-[#030712]/80 backdrop-blur-md">
         <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-md bg-gray-900 flex items-center justify-center">
+            <div className="h-6 w-6 rounded-md bg-blue-600 flex items-center justify-center">
               <Sparkles className="h-3 w-3 text-white" />
             </div>
-            <span className="font-heading font-bold text-sm text-gray-900">VortexCrypto</span>
+            <span className="font-heading font-bold text-sm text-white">VortexCrypto</span>
           </div>
-          <p className="text-xs text-gray-400">© {new Date().getFullYear()} VortexCrypto. All rights reserved.</p>
+          <p className="text-xs text-gray-500">© {new Date().getFullYear()} VortexCrypto. All rights reserved.</p>
         </div>
       </footer>
     </div>

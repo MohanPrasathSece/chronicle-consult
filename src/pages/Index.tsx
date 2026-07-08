@@ -1293,7 +1293,7 @@ export function IndexPage() {
 
       {/* Footer */}
       <footer className="mt-16 border-t border-slate-200 bg-white text-slate-500 py-16 font-sans text-xs">
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Column 1: Editorial Brand */}
           <div className="col-span-2 sm:col-span-1 lg:col-span-1">
             <h4 className="font-display font-extrabold text-slate-900 text-base uppercase mb-3" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
@@ -1349,16 +1349,6 @@ export function IndexPage() {
               <li><a href="/enquiry" className="hover:text-red-600">Secure Mailbox Login</a></li>
               <li><a href="/enquiry" className="hover:text-red-600">Request Custom Index</a></li>
             </ul>
-          </div>
-
-          {/* Column 6: Offices & HQ */}
-          <div>
-            <h5 className="font-bold text-slate-900 uppercase mb-3">Offices</h5>
-            <p className="space-y-2 text-slate-500 leading-relaxed">
-              <span><strong>London HQ:</strong> 48 Cornhill, EC3V 3PD</span><br />
-              <span><strong>Mumbai Desk:</strong> BKC, G-Block, 400051</span><br />
-              <span><strong>Support:</strong> desk@investorschronicle.example</span>
-            </p>
           </div>
         </div>
 

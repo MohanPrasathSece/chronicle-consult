@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Check, Loader2, ArrowRight, Shield, Zap, TrendingUp, BarChart3, Globe, Lock, ChevronRight, Sparkles } from "lucide-react";
+import { Check, Loader2, ArrowRight, Shield, Zap, TrendingUp, Lock, ChevronRight, Sparkles } from "lucide-react";
 import {
   validatePhoneNumber,
   countryConfigs,
@@ -105,43 +105,44 @@ export function EnquiryPage() {
       </header>
 
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative overflow-hidden">
-        {/* Subtle gradient orbs */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-b from-blue-50/80 via-violet-50/40 to-transparent rounded-full blur-3xl -z-10" />
+      <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%)' }}>
+        {/* Decorative gradient orbs */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl -z-0 pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-violet-500/10 rounded-full blur-3xl -z-0 pointer-events-none" />
 
-        <div className="mx-auto max-w-4xl px-6 pt-24 pb-20 text-center">
+        <div className="relative z-10 mx-auto max-w-4xl px-6 pt-24 pb-20 text-center">
           {/* Badge */}
-          <div className="fade-up inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-1.5 text-[12px] font-semibold text-gray-600 mb-8">
+          <div className="fade-up inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 text-[12px] font-semibold text-gray-300 mb-8 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
             {leadsCount !== null ? `${leadsCount.toLocaleString()} investors onboarded` : "Now accepting new allocations"}
             <ChevronRight className="h-3 w-3 text-gray-400" />
           </div>
 
-          <h1 className="fade-up-d1 text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-gray-900 leading-[1.1] tracking-tight max-w-3xl mx-auto">
+          <h1 className="fade-up-d1 text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white leading-[1.1] tracking-tight max-w-3xl mx-auto">
             The modern platform for
-            <span className="bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 bg-clip-text text-transparent"> crypto wealth </span>
+            <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 bg-clip-text text-transparent"> crypto wealth </span>
             management
           </h1>
 
-          <p className="fade-up-d2 mt-6 text-gray-500 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="fade-up-d2 mt-6 text-gray-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
             Automated yield strategies, real-time arbitrage execution, and institutional-grade portfolio management — in one clean platform.
           </p>
 
           <div className="fade-up-d3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="#contact" className="bg-gray-900 hover:bg-gray-800 text-white font-bold px-8 py-4 rounded-full text-sm transition-all shadow-lg inline-flex items-center gap-2">
+            <a href="#contact" className="bg-white hover:bg-gray-100 text-gray-900 font-bold px-8 py-4 rounded-full text-sm transition-all shadow-lg inline-flex items-center gap-2">
               Start Free Trial <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#features" className="text-gray-600 hover:text-gray-900 font-semibold text-sm transition-colors inline-flex items-center gap-2 px-6 py-4">
+            <a href="#features" className="text-gray-400 hover:text-white font-semibold text-sm transition-colors inline-flex items-center gap-2 px-6 py-4 border border-white/15 rounded-full">
               See how it works <ChevronRight className="h-4 w-4" />
             </a>
           </div>
 
           {/* Trust logos */}
-          <div className="mt-16 pt-8 border-t border-gray-100">
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-5">Trusted by teams at</p>
+          <div className="mt-16 pt-8 border-t border-white/10">
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-500 mb-5">Trusted by teams at</p>
             <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
               {LOGOS.map((name, i) => (
-                <span key={i} className="text-[13px] font-bold text-gray-300 tracking-wide">{name}</span>
+                <span key={i} className="text-[13px] font-bold text-gray-600 tracking-wide">{name}</span>
               ))}
             </div>
           </div>
@@ -149,7 +150,7 @@ export function EnquiryPage() {
       </section>
 
       {/* ── SECTION 2: FEATURES ── */}
-      <section id="features" className="bg-gray-50/50 border-y border-gray-100">
+      <section id="features" className="bg-slate-50 border-y border-slate-200">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <div className="text-center mb-16">
             <p className="text-[12px] font-bold uppercase tracking-widest text-blue-600 mb-3">Platform</p>
@@ -202,61 +203,8 @@ export function EnquiryPage() {
         </div>
       </section>
 
-      {/* ── SECTION 3: STATS / SOCIAL PROOF ── */}
-      <section id="stats" className="bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="text-[12px] font-bold uppercase tracking-widest text-violet-600 mb-3">Performance</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-              Numbers that speak for themselves
-            </h2>
-          </div>
-
-          {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            {[
-              { v: "$4.2B", l: "Assets managed", icon: <BarChart3 className="h-4 w-4" /> },
-              { v: "37%", l: "Avg. annual return", icon: <TrendingUp className="h-4 w-4" /> },
-              { v: "2,400+", l: "Active investors", icon: <Globe className="h-4 w-4" /> },
-              { v: "99.9%", l: "Platform uptime", icon: <Lock className="h-4 w-4" /> },
-            ].map((s, i) => (
-              <div key={i} className="text-center p-6 rounded-2xl bg-gray-50 border border-gray-100">
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white border border-gray-200 text-gray-400 mb-4">{s.icon}</div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-gray-900">{s.v}</div>
-                <div className="text-xs text-gray-500 mt-1 font-medium">{s.l}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { q: "VortexCrypto tripled our crypto allocation yield in 8 months. The automation is flawless.", name: "Marcus T.", role: "PE Partner" },
-              { q: "Finally a platform that handles institutional volumes with DeFi-grade returns. Remarkable.", name: "Priya S.", role: "Family Office CIO" },
-              { q: "The arbitrage engine alone has paid for our entire subscription many times over.", name: "David K.", role: "Hedge Fund Manager" },
-            ].map((t, i) => (
-              <div key={i} className="bg-gray-50 rounded-2xl border border-gray-100 p-6">
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, si) => (
-                    <svg key={si} className="h-3.5 w-3.5 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  ))}
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">"{t.q}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-500">{t.name[0]}</div>
-                  <div>
-                    <div className="text-xs font-bold text-gray-900">{t.name}</div>
-                    <div className="text-[11px] text-gray-400">{t.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 4: CONTACT FORM ── */}
-      <section id="contact" className="bg-gray-50/50 border-t border-gray-100">
+      {/* ── SECTION 3: CONTACT FORM ── */}
+      <section id="contact" className="bg-white">
         <div className="mx-auto max-w-5xl px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
             {/* Left info */}
@@ -354,7 +302,7 @@ export function EnquiryPage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="bg-white border-t border-gray-100 py-10">
+      <footer className="bg-slate-50 border-t border-slate-200 py-10">
         <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="h-6 w-6 rounded-md bg-gray-900 flex items-center justify-center">

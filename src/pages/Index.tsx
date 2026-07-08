@@ -977,10 +977,10 @@ export function IndexPage() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 border-t border-slate-300 bg-slate-950 text-slate-400 py-12 font-sans text-xs">
+      <footer className="mt-16 border-t border-slate-200 bg-white text-slate-500 py-12 font-sans text-xs">
         <div className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h4 className="font-display font-extrabold text-white text-base uppercase" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <h4 className="font-display font-extrabold text-slate-900 text-base uppercase" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
               The Investor's Chronicle
             </h4>
             <p className="mt-2 text-slate-500 leading-relaxed">
@@ -988,29 +988,29 @@ export function IndexPage() {
             </p>
           </div>
           <div>
-            <h5 className="font-bold text-white uppercase mb-3">Headquarters</h5>
+            <h5 className="font-bold text-slate-900 uppercase mb-3">Headquarters</h5>
             <p className="space-y-1 text-slate-500 leading-relaxed">
               <span>48 Cornhill, London EC3V 3PD</span><br />
               <span>United Kingdom</span>
             </p>
           </div>
           <div>
-            <h5 className="font-bold text-white uppercase mb-3">Support</h5>
+            <h5 className="font-bold text-slate-900 uppercase mb-3">Support</h5>
             <p className="space-y-1 text-slate-500">
               <span>desk@investorschronicle.example</span><br />
               <span>+44 (0) 20 7946 0100</span>
             </p>
           </div>
           <div>
-            <h5 className="font-bold text-white uppercase mb-3">Institutional</h5>
-            <a href="/enquiry" className="text-red-500 font-bold hover:underline">
+            <h5 className="font-bold text-slate-900 uppercase mb-3">Institutional</h5>
+            <a href="/enquiry" className="text-red-600 font-bold hover:underline">
               Meridian Prime Portal
             </a>
           </div>
         </div>
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 border-t border-slate-900 mt-8 pt-6 flex flex-col md:flex-row justify-between text-slate-600">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-6 border-t border-slate-200 mt-8 pt-6 flex flex-col md:flex-row justify-between text-slate-500">
           <p>© {new Date().getFullYear()} The Investor's Chronicle. All rights reserved.</p>
-          <p className="mt-2 md:mt-0 uppercase tracking-widest text-[9px] font-bold">SECURED GATEWAY ACTIVE</p>
+          <p className="mt-2 md:mt-0 uppercase tracking-widest text-[9px] font-bold text-red-600">SECURED GATEWAY ACTIVE</p>
         </div>
       </footer>
     </div>

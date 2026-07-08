@@ -272,6 +272,9 @@ export default function Strands({
     const ctn = ctnDom.current;
     if (!ctn) return;
 
+    const initialWidth = ctn.offsetWidth || 800;
+    const initialHeight = ctn.offsetHeight || 600;
+
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
@@ -293,7 +296,7 @@ export default function Strands({
       fragment: FRAG,
       uniforms: {
         uTime: { value: 0 },
-        uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
+        uResolution: { value: [initialWidth, initialHeight] },
         uColors: { value: buildPalette(propsRef.current.colors) },
         uColorCount: { value: Math.min(propsRef.current.colors.length, MAX_COLORS) },
         uStrandCount: { value: Math.min(propsRef.current.count, MAX_STRANDS) },
@@ -315,8 +318,8 @@ export default function Strands({
     const mesh = new Mesh(gl, { geometry, program });
 
     const renderTarget = new RenderTarget(gl, {
-      width: ctn.offsetWidth,
-      height: ctn.offsetHeight
+      width: initialWidth,
+      height: initialHeight
     });
 
     const glassProgram = new Program(gl, {
@@ -324,7 +327,7 @@ export default function Strands({
       fragment: GLASS_FRAG,
       uniforms: {
         uScene: { value: renderTarget.texture },
-        uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
+        uResolution: { value: [initialWidth, initialHeight] },
         uRadius: { value: 0.46 * glassSize },
         uRefraction: { value: refraction },
         uDispersion: { value: dispersion }
@@ -334,17 +337,18 @@ export default function Strands({
 
     ctn.appendChild(gl.canvas);
 
-    function resize() {
-      if (!ctn) return;
-      const width = ctn.offsetWidth;
-      const height = ctn.offsetHeight;
-      renderer.setSize(width, height);
-      program.uniforms.uResolution.value = [width, height];
-      renderTarget.setSize(width, height);
-      glassProgram.uniforms.uResolution.value = [width, height];
-    }
-    window.addEventListener('resize', resize);
-    resize();
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        const w = width || 300;
+        const h = height || 150;
+        renderer.setSize(w, h);
+        program.uniforms.uResolution.value = [w, h];
+        renderTarget.setSize(w, h);
+        glassProgram.uniforms.uResolution.value = [w, h];
+      }
+    });
+    resizeObserver.observe(ctn);
 
     let animateId = 0;
     const update = (t: number) => {
@@ -382,7 +386,7 @@ export default function Strands({
 
     return () => {
       cancelAnimationFrame(animateId);
-      window.removeEventListener('resize', resize);
+      resizeObserver.disconnect();
       if (ctn && gl.canvas.parentNode === ctn) {
         ctn.removeChild(gl.canvas);
       }

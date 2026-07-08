@@ -122,10 +122,9 @@ export function EnquiryPage() {
         </div>
       </header>
 
-      {/* ── SECTION 1: HERO ── */}
       <section className="relative overflow-hidden min-h-[500px] flex items-center justify-center">
         {/* Background Strands Animation */}
-        <div className="absolute inset-0 w-full h-full -z-10 pointer-events-none opacity-40">
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-40">
           <Strands
             colors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
             count={3}

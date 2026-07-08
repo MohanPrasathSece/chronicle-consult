@@ -34,6 +34,28 @@ export function EnquiryPage() {
     fetch("/api/leads-count").then(r => r.json()).then(d => d?.count && setLeadsCount(d.count)).catch(() => {});
   }, []);
 
+  // IntersectionObserver reveal effect hook
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("reveal-in"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("reveal-in");
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   useEffect(() => {
     if (!form.phone.trim()) { setErrors(p => { const { phone: _, ...r } = p; return r; }); return; }
     const err = validatePhoneNumber(form.phone, form.countryCode);
@@ -70,7 +92,7 @@ export function EnquiryPage() {
   const cfg = countryConfigs[form.countryCode] || countryConfigs.GEN;
 
   return (
-    <div className="min-h-screen w-full bg-[#030712] text-white antialiased overflow-x-hidden relative" style={{ fontFamily: "'Urbanist', system-ui, sans-serif" }}>
+    <div className="min-h-screen w-full bg-[#030712] text-white antialiased overflow-x-hidden relative text-[15px] sm:text-[17px] tracking-wide leading-relaxed" style={{ fontFamily: "'Urbanist', system-ui, sans-serif" }}>
       {/* Dynamic Glowing Mesh Background Orbs */}
       <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] -z-10 pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
       <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[130px] -z-10 pointer-events-none animate-pulse" style={{ animationDuration: "12s" }} />
@@ -80,7 +102,10 @@ export function EnquiryPage() {
         a, button, [role="button"] { cursor: pointer !important; }
         input, textarea, select { cursor: text !important; }
         select { cursor: pointer !important; }
-        h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Urbanist', system-ui, sans-serif !important; }
+        h1, h2, h3, h4, h5, h6, .font-heading { 
+          font-family: 'Urbanist', system-ui, sans-serif !important; 
+          letter-spacing: 0.04em !important;
+        }
         @keyframes fadeUp { from { opacity:0; transform:translateY(24px) } to { opacity:1; transform:translateY(0) } }
         @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
         .fade-up { animation: fadeUp 0.7s ease-out both; }
@@ -100,6 +125,17 @@ export function EnquiryPage() {
           background: rgba(255, 255, 255, 0.05);
           border: 1px solid rgba(255, 255, 255, 0.15);
           box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+        }
+
+        /* Scroll Reveal base style override */
+        [data-reveal] {
+          opacity: 0;
+          transform: translateY(28px);
+          transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-in {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
         }
       `}</style>
 
@@ -122,7 +158,8 @@ export function EnquiryPage() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden min-h-[500px] flex items-center justify-center">
+      {/* ── SECTION 1: HERO ── */}
+      <section className="relative overflow-hidden min-h-[520px] flex items-center justify-center">
         {/* Background Particles Animation */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-90">
           <Particles
@@ -146,13 +183,13 @@ export function EnquiryPage() {
             <ChevronRight className="h-3 w-3 text-gray-500" />
           </div>
 
-          <h1 className="fade-up-d1 text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-white leading-[1.1] tracking-tight max-w-3xl mx-auto">
+          <h1 className="fade-up-d1 text-4xl sm:text-5xl lg:text-[58px] font-extrabold text-white leading-[1.1] tracking-wide max-w-3xl mx-auto">
             The modern platform for
             <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 bg-clip-text text-transparent"> crypto wealth </span>
             management
           </h1>
 
-          <p className="fade-up-d2 mt-6 text-gray-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="fade-up-d2 mt-6 text-gray-400 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed tracking-wide">
             Automated yield strategies, real-time arbitrage execution, and institutional-grade portfolio management — in one clean glassmorphic portal.
           </p>
 
@@ -170,7 +207,7 @@ export function EnquiryPage() {
             <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-500 mb-5">Trusted by teams at</p>
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12">
               {LOGOS.map((name, i) => (
-                <span key={i} className="text-[13px] font-bold text-gray-500 hover:text-gray-300 transition-colors tracking-wide">{name}</span>
+                <span key={i} className="text-[13px] sm:text-[14px] font-bold text-gray-500 hover:text-gray-300 transition-colors tracking-wide">{name}</span>
               ))}
             </div>
           </div>
@@ -180,12 +217,14 @@ export function EnquiryPage() {
       {/* ── SECTION 2: FEATURES ── */}
       <section id="features" className="border-y border-white/5">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-24">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-12 sm:mb-16" data-reveal>
             <p className="text-[12px] font-bold uppercase tracking-widest text-blue-400 mb-3">Platform</p>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-wide">
               Everything you need to grow
             </h2>
-            <p className="mt-3 text-gray-400 text-sm max-w-md mx-auto">Three core engines working together to maximise your returns.</p>
+            <p className="mt-3 text-gray-455 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+              Three core engines working together to maximise your returns.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -215,12 +254,12 @@ export function EnquiryPage() {
                 accent: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
               },
             ].map((f, i) => (
-              <div key={i} className="glass-panel glass-panel-hover rounded-2xl p-7 transition-all duration-300 group">
+              <div key={i} className="glass-panel glass-panel-hover rounded-2xl p-7 transition-all duration-300 group" data-reveal style={{ transitionDelay: `${i * 120}ms` }}>
                 <div className={`h-11 w-11 rounded-xl ${f.accent} border flex items-center justify-center mb-5`}>
                   {f.icon}
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed mb-6">{f.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-2">{f.title}</h3>
+                <p className="text-sm sm:text-[15px] text-gray-400 leading-relaxed mb-6">{f.desc}</p>
                 <div className="pt-4 border-t border-white/5">
                   <div className="text-2xl font-extrabold text-white">{f.metric}</div>
                   <div className="text-xs text-gray-500 mt-0.5">{f.metricLabel}</div>
@@ -233,15 +272,15 @@ export function EnquiryPage() {
 
       {/* ── SECTION 3: CONTACT FORM (DARK GLASS) ── */}
       <section id="contact" className="relative overflow-hidden">
-        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 py-16 sm:py-24">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 py-16 sm:py-24" data-reveal>
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
             {/* Left info */}
             <div className="lg:col-span-2 space-y-6">
               <p className="text-[12px] font-bold uppercase tracking-widest text-blue-400">Get started</p>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide leading-tight">
                 Schedule your personalised demo
               </h2>
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                 Tell us about your goals. Our team will prepare a custom onboarding session within 60 minutes.
               </p>
 
@@ -251,7 +290,7 @@ export function EnquiryPage() {
                   { icon: <Check className="h-4 w-4 text-blue-400" />, text: "Mandate confirmation in 60 min" },
                   { icon: <Lock className="h-4 w-4 text-blue-400" />, text: "No commitment required" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm text-gray-400">
+                  <div key={i} className="flex items-center gap-3 text-sm sm:text-base text-gray-400">
                     <div className="h-8 w-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10">{item.icon}</div>
                     {item.text}
                   </div>
@@ -267,14 +306,14 @@ export function EnquiryPage() {
                     <Check className="h-7 w-7" />
                   </div>
                   <h3 className="text-xl font-extrabold text-white mb-2">You're all set!</h3>
-                  <p className="text-sm text-gray-400 max-w-sm mx-auto leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-400 max-w-sm mx-auto leading-relaxed">
                     Your enquiry has been received. An onboarding specialist will reach you within the hour.
                   </p>
                 </div>
               ) : (
                 <div className="glass-panel rounded-2xl p-6 sm:p-8 shadow-2xl">
                   {errors.general && (
-                    <div className="mb-5 rounded-xl bg-red-500/10 border border-red-500/20 p-3 text-xs text-red-400 font-medium text-center">{errors.general}</div>
+                    <div className="mb-5 rounded-xl bg-red-500/10 border border-red-200 p-3 text-xs text-red-400 font-medium text-center">{errors.general}</div>
                   )}
 
                   <form onSubmit={handleSubmit} className="space-y-5">

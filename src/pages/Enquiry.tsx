@@ -4,7 +4,7 @@ import {
   validatePhoneNumber,
   countryConfigs,
 } from "../lib/phoneValidation";
-import Strands from "../components/Strands";
+import Particles from "../components/Particles";
 
 const COUNTRIES = [
   { code: "US", label: "🇺🇸 US +1" },
@@ -123,22 +123,17 @@ export function EnquiryPage() {
       </header>
 
       <section className="relative overflow-hidden min-h-[500px] flex items-center justify-center">
-        {/* Background Strands Animation */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-40">
-          <Strands
-            colors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
-            count={3}
-            speed={0.4}
-            amplitude={0.8}
-            waviness={1.0}
-            thickness={0.6}
-            glow={2.2}
-            taper={2.0}
-            spread={1.0}
-            intensity={0.5}
-            saturation={1.2}
-            opacity={1.0}
-            scale={1.2}
+        {/* Background Particles Animation */}
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-50">
+          <Particles
+            particleColors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
+            particleCount={250}
+            particleSpread={12}
+            speed={0.15}
+            particleBaseSize={100}
+            moveParticlesOnHover={true}
+            alphaParticles={true}
+            disableRotation={false}
           />
         </div>
 

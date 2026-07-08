@@ -489,8 +489,6 @@ function Stat({ n, suffix = "", label }: { n: number; suffix?: string; label: st
   );
 }
 
-
-
 /* ------------------------------------------------------------------ */
 /*  Page Layout                                                        */
 /* ------------------------------------------------------------------ */
@@ -1034,7 +1032,6 @@ export function IndexPage() {
                 Decentralized cover protocols pay automated claims when audited contracts are breached.
               </p>
             </article>
-
           </aside>
 
         </div>

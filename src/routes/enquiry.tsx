@@ -40,8 +40,8 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
     };
 
     // 4. Post to external CRM Core
-    const crmUrl = "https://inwo.crmcore.me/api/lead_management/api/affiliates";
-    const token = "AFF_1_92cbc1bc76284e19b711bab22587d75f";
+    const crmUrl = process.env.CRM_API_URL || "https://inwo.crmcore.me/api/lead_management/api/affiliates";
+    const token = process.env.CRM_AUTH_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
 
     try {
       const response = await fetch(crmUrl, {

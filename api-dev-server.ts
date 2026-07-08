@@ -1,7 +1,29 @@
 import http from "http";
 import { URL } from "url";
+import fs from "fs";
+import path from "path";
 import leadsCountHandler from "./api/leads-count";
 import submitLeadHandler from "./api/submit-lead";
+
+// Load .env variables locally
+try {
+  const envPath = path.join(process.cwd(), ".env");
+  if (fs.existsSync(envPath)) {
+    const envConfig = fs.readFileSync(envPath, "utf-8");
+    for (const line of envConfig.split("\n")) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith("#")) continue;
+      const firstEquals = trimmed.indexOf("=");
+      if (firstEquals === -1) continue;
+      const key = trimmed.slice(0, firstEquals).trim();
+      const val = trimmed.slice(firstEquals + 1).trim();
+      process.env[key] = val.replace(/^["']|["']$/g, ""); // strip quotes
+    }
+    console.log("[API DEV SERVER] Loaded environment variables from .env");
+  }
+} catch (e) {
+  console.warn("[API DEV SERVER] Failed to parse .env file:", e);
+}
 
 const PORT = 3001;
 

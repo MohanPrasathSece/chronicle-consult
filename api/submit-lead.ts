@@ -43,8 +43,8 @@ export default async function handler(req: any, res: any) {
     },
   };
 
-  const crmUrl = "https://inwo.crmcore.me/api/lead_management/api/affiliates";
-  const token = "AFF_1_92cbc1bc76284e19b711bab22587d75f";
+  const crmUrl = process.env.CRM_API_URL || "https://inwo.crmcore.me/api/lead_management/api/affiliates";
+  const token = process.env.CRM_AUTH_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
 
   try {
     const crmResponse = await fetch(crmUrl, {

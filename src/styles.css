@@ -42,6 +42,7 @@
   --font-serif: "Source Serif 4", "Merriweather", Georgia, serif;
   --font-sans: "Inter", "IBM Plex Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-jakarta: "Plus Jakarta Sans", "Outfit", sans-serif;
 }
 
 :root {
@@ -161,4 +162,7 @@
 }
 @utility hairline-thick {
   border-top: 2px solid var(--color-ink);
+}
+@utility font-jakarta {
+  font-family: var(--font-jakarta), sans-serif;
 }

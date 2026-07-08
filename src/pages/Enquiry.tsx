@@ -69,11 +69,12 @@ export function EnquiryPage() {
   const cfg = countryConfigs[form.countryCode] || countryConfigs.GEN;
 
   return (
-    <div className="min-h-screen w-full bg-white antialiased overflow-x-hidden" style={{ fontFamily: "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif" }}>
+    <div className="min-h-screen w-full bg-white antialiased overflow-x-hidden" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
       <style>{`
         a, button, [role="button"] { cursor: pointer !important; }
         input, textarea, select { cursor: text !important; }
         select { cursor: pointer !important; }
+        h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif !important; }
         @keyframes fadeUp { from { opacity:0; transform:translateY(24px) } to { opacity:1; transform:translateY(0) } }
         @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
         .fade-up { animation: fadeUp 0.7s ease-out both; }
@@ -90,7 +91,7 @@ export function EnquiryPage() {
             <div className="h-8 w-8 rounded-lg bg-black flex items-center justify-center">
               <Sparkles className="h-4 w-4 text-white" />
             </div>
-            <span className="font-extrabold text-[17px] text-gray-900 tracking-tight">VortexCrypto</span>
+            <span className="font-heading font-extrabold text-[17px] text-gray-900 tracking-tight">VortexCrypto</span>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-[13px] font-semibold text-gray-500">
             <a href="#features" className="hover:text-gray-900 transition-colors">Features</a>
@@ -359,7 +360,7 @@ export function EnquiryPage() {
             <div className="h-6 w-6 rounded-md bg-gray-900 flex items-center justify-center">
               <Sparkles className="h-3 w-3 text-white" />
             </div>
-            <span className="font-bold text-sm text-gray-900">VortexCrypto</span>
+            <span className="font-heading font-bold text-sm text-gray-900">VortexCrypto</span>
           </div>
           <p className="text-xs text-gray-400">© {new Date().getFullYear()} VortexCrypto. All rights reserved.</p>
         </div>

@@ -4,6 +4,7 @@ import {
   validatePhoneNumber,
   countryConfigs,
 } from "../lib/phoneValidation";
+import Strands from "../components/Strands";
 
 const COUNTRIES = [
   { code: "US", label: "🇺🇸 US +1" },
@@ -122,7 +123,26 @@ export function EnquiryPage() {
       </header>
 
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-[500px] flex items-center justify-center">
+        {/* Background Strands Animation */}
+        <div className="absolute inset-0 w-full h-full -z-10 pointer-events-none opacity-40">
+          <Strands
+            colors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
+            count={3}
+            speed={0.4}
+            amplitude={0.8}
+            waviness={1.0}
+            thickness={0.6}
+            glow={2.2}
+            taper={2.0}
+            spread={1.0}
+            intensity={0.5}
+            saturation={1.2}
+            opacity={1.0}
+            scale={1.2}
+          />
+        </div>
+
         <div className="relative z-10 mx-auto max-w-4xl px-6 pt-24 pb-20 text-center">
           {/* Badge */}
           <div className="fade-up inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-[12px] font-semibold text-gray-300 mb-8 backdrop-blur-sm">

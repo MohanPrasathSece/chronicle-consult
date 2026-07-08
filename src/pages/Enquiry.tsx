@@ -126,12 +126,13 @@ export function EnquiryPage() {
         {/* Background Particles Animation */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-90">
           <Particles
-            particleColors={["#ffffff", "#00f0ff", "#3b82f6", "#a855f7"]}
+            particleColors={["#ffffff"]}
             particleCount={120}
             particleSpread={15}
             speed={0.12}
             particleBaseSize={200}
             moveParticlesOnHover={true}
+            particleHoverFactor={5}
             alphaParticles={false}
             disableRotation={false}
           />

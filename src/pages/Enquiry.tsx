@@ -104,18 +104,18 @@ export function EnquiryPage() {
 
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-50 backdrop-blur-xl border-b border-white/10 bg-[#030712]/75">
-        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <Sparkles className="h-4 w-4 text-white" />
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
+          <a href="#" className="flex items-center gap-2 group flex-shrink-0">
+            <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
             </div>
-            <span className="font-heading font-extrabold text-[17px] text-white tracking-tight">VortexCrypto</span>
+            <span className="font-heading font-extrabold text-[15px] sm:text-[17px] text-white tracking-tight">VortexCrypto</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-[13px] font-semibold text-gray-400">
+          <nav className="flex items-center gap-4 sm:gap-8 text-[12px] sm:text-[13px] font-semibold text-gray-400">
             <a href="#features" className="hover:text-white transition-colors">Features</a>
             <a href="#contact" className="hover:text-white transition-colors">Contact</a>
           </nav>
-          <a href="#contact" className="bg-blue-600 hover:bg-blue-500 text-white text-[13px] font-bold px-5 py-2.5 rounded-full transition-all shadow-lg shadow-blue-500/20 hover:scale-[1.02]">
+          <a href="#contact" className="bg-blue-600 hover:bg-blue-500 text-white text-[11px] sm:text-[13px] font-bold px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full transition-all shadow-lg shadow-blue-500/20 hover:scale-[1.02] flex-shrink-0">
             Get Started
           </a>
         </div>
@@ -151,9 +151,9 @@ export function EnquiryPage() {
           </div>
 
           {/* Trust logos */}
-          <div className="mt-16 pt-8 border-t border-white/5">
+          <div className="mt-12 sm:mt-16 pt-8 border-t border-white/5">
             <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-500 mb-5">Trusted by teams at</p>
-            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12">
               {LOGOS.map((name, i) => (
                 <span key={i} className="text-[13px] font-bold text-gray-500 hover:text-gray-300 transition-colors tracking-wide">{name}</span>
               ))}
@@ -164,10 +164,10 @@ export function EnquiryPage() {
 
       {/* ── SECTION 2: FEATURES ── */}
       <section id="features" className="border-y border-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="text-center mb-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-24">
+          <div className="text-center mb-12 sm:mb-16">
             <p className="text-[12px] font-bold uppercase tracking-widest text-blue-400 mb-3">Platform</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
               Everything you need to grow
             </h2>
             <p className="mt-3 text-gray-400 text-sm max-w-md mx-auto">Three core engines working together to maximise your returns.</p>
@@ -218,12 +218,12 @@ export function EnquiryPage() {
 
       {/* ── SECTION 3: CONTACT FORM (DARK GLASS) ── */}
       <section id="contact" className="relative overflow-hidden">
-        <div className="relative z-10 mx-auto max-w-5xl px-6 py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 py-16 sm:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
             {/* Left info */}
             <div className="lg:col-span-2 space-y-6">
               <p className="text-[12px] font-bold uppercase tracking-widest text-blue-400">Get started</p>
-              <h2 className="text-3xl font-extrabold text-white tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
                 Schedule your personalised demo
               </h2>
               <p className="text-sm text-gray-400 leading-relaxed">
@@ -247,7 +247,7 @@ export function EnquiryPage() {
             {/* Right form */}
             <div className="lg:col-span-3">
               {status === "success" ? (
-                <div className="glass-panel rounded-2xl p-10 text-center shadow-2xl fade-in">
+                <div className="glass-panel rounded-2xl p-8 sm:p-10 text-center shadow-2xl fade-in">
                   <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20 text-green-400 mb-5">
                     <Check className="h-7 w-7" />
                   </div>
@@ -255,12 +255,9 @@ export function EnquiryPage() {
                   <p className="text-sm text-gray-400 max-w-sm mx-auto leading-relaxed">
                     Your enquiry has been received. An onboarding specialist will reach you within the hour.
                   </p>
-                  <div className="mt-6 inline-block bg-white/5 border border-white/10 rounded-full px-5 py-2 font-mono text-xs text-gray-300">
-                    REF: <span className="text-blue-400 font-bold">VX-{Math.floor(100000 + Math.random() * 899999)}</span>
-                  </div>
                 </div>
               ) : (
-                <div className="glass-panel rounded-2xl p-8 shadow-2xl">
+                <div className="glass-panel rounded-2xl p-6 sm:p-8 shadow-2xl">
                   {errors.general && (
                     <div className="mb-5 rounded-xl bg-red-500/10 border border-red-500/20 p-3 text-xs text-red-400 font-medium text-center">{errors.general}</div>
                   )}
@@ -283,16 +280,16 @@ export function EnquiryPage() {
 
                     <div>
                       <label className="block text-xs font-semibold text-gray-400 mb-1.5">Phone Number</label>
-                      <div className="flex gap-3">
+                      <div className="flex gap-2 sm:gap-3">
                         <select value={form.countryCode} onChange={set("countryCode")}
-                          className="bg-slate-900 border border-white/10 rounded-xl px-3 py-3 text-sm text-white outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all appearance-none min-w-[115px]"
-                          style={{ backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 10px center", backgroundSize: "14px", paddingRight: "30px" }}>
+                          className="bg-slate-900 border border-white/10 rounded-xl px-2 sm:px-3 py-3 text-xs sm:text-sm text-white outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all appearance-none w-[95px] sm:w-[115px] flex-shrink-0"
+                          style={{ backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 8px center", backgroundSize: "12px", paddingRight: "24px" }}>
                           {COUNTRIES.map(c => <option key={c.code} value={c.code} className="bg-slate-900">{c.label}</option>)}
                         </select>
                         <input type="tel" value={form.phone} onChange={set("phone")} placeholder={cfg.placeholder}
-                          className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all" />
+                          className="flex-1 min-w-0 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs sm:text-sm text-white placeholder-gray-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all" />
                       </div>
-                      {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone}</p>}
+                      {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
                     </div>
 
                     <div>

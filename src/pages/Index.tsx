@@ -130,6 +130,16 @@ const trendingTags = [
   "Arbitrum Upgrade",
 ];
 
+const TIMELINE = [
+  { y: "1998", t: "Founded in London by former fixed-income desk heads." },
+  { y: "2004", t: "Opens institutional research office in Mumbai." },
+  { y: "2008", t: "Preserves 96% of client capital through the financial crisis." },
+  { y: "2013", t: "First sovereign mandate; assets cross USD 4 bn." },
+  { y: "2019", t: "Publishes ‘Six Signals’ framework for macro screening." },
+  { y: "2022", t: "Adds private-credit and infrastructure research desks." },
+  { y: "2025", t: "Named among 20 most-cited allocators globally." },
+];
+
 const inTheNewsItems = [
   { name: "AI Masterclass" },
   { name: "Money Masterclass" },

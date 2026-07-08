@@ -24,6 +24,8 @@ import {
 
 import heroImg from "@/assets/hero-trading-floor.jpg";
 import institutionImg from "@/assets/institution.jpg";
+import video1 from "@/assets/WhatsApp Video 2026-07-07 at 10.48.37 (1).mp4";
+import video2 from "@/assets/WhatsApp Video 2026-07-07 at 10.48.38.mp4";
 
 import {
   validatePhoneNumber,
@@ -221,8 +223,8 @@ function TopBar() {
 
   return (
     <div className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 py-1.5 text-[11px] font-sans text-slate-500 sm:px-6">
-        <div className="flex items-center gap-4">
+      <div className="mx-auto flex flex-col sm:flex-row max-w-[1280px] items-center justify-between px-4 py-1.5 text-[11px] font-sans text-slate-500 sm:px-6 gap-2 sm:gap-0">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4">
           {/* Edition Selector */}
           <div className="relative">
             <button
@@ -268,7 +270,7 @@ function TopBar() {
           <span className="text-slate-300">|</span>
 
           {/* Weather Widget */}
-          <span className="flex items-center gap-1.5">
+          <span className="hidden md:flex items-center gap-1.5">
             <MapPin className="h-3 w-3" />
             <span>London 14° Overcast</span>
           </span>
@@ -756,7 +758,7 @@ export function IndexPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* LEFT COLUMN: Related Articles (25% width equivalent) */}
-          <aside className="lg:col-span-3 space-y-6">
+          <aside className="lg:col-span-3 space-y-6 order-2 lg:order-1">
             <div className="border-b-2 border-slate-900 pb-2">
               <h3 className="font-sans font-extrabold text-sm uppercase tracking-wider text-slate-900">
                 RELATED ARTICLES
@@ -822,14 +824,14 @@ export function IndexPage() {
           </aside>
 
           {/* CENTER COLUMN: Main Crypto Article (~55% width equivalent) */}
-          <section className="lg:col-span-6 space-y-6 border-x border-slate-200 lg:px-6">
+          <section className="lg:col-span-6 space-y-6 border-y lg:border-y-0 lg:border-x border-slate-200 py-6 lg:py-0 lg:px-6 order-1 lg:order-2">
             <article id="article-body">
               <p className="font-sans text-[11px] font-extrabold uppercase tracking-widest text-red-600">
                 Cryptocurrency & Capital Markets
               </p>
               
               <h2 
-                className="mt-2 font-sans text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight"
+                className="mt-2 font-sans text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight"
                 style={{ letterSpacing: "-0.02em" }}
               >
                 The Liquidity Multiplier: How Digital Assets Accelerate Wealth Creation
@@ -869,28 +871,48 @@ export function IndexPage() {
                   <Stat n={8.4} suffix="x" label="Capital Velocity Multiplier" />
                 </div>
 
-                {/* Video section */}
-                <figure className="my-6 border border-slate-200 rounded-lg p-4 bg-white">
-                  <h4 className="font-sans font-bold text-base text-slate-900 mb-2">
-                    DeFi Asset Flows and Tokenization Dynamics
-                  </h4>
-                  <div className="relative aspect-video bg-black rounded overflow-hidden">
-                    <video
-                      src="https://assets.mixkit.co/videos/preview/mixkit-business-charts-on-a-screen-40082-large.mp4"
-                      className="w-full h-full object-cover cursor-pointer"
-                      autoPlay={false}
-                      muted={false}
-                      controls
-                    />
-                  </div>
-                  <p className="mt-2 font-sans text-[11px] text-slate-500 italic text-center">
-                    Eleanor Marsh reports on the structural flows behind the headlines. Click to play.
-                  </p>
-                </figure>
+                {/* Video 1 (Native aspect ratio, no cropping, no caption) */}
+                <div className="my-6 border border-slate-200 rounded-lg overflow-hidden bg-black shadow-sm">
+                  <video
+                    src={video1}
+                    className="w-full h-auto object-contain max-h-[600px] cursor-pointer"
+                    autoPlay={false}
+                    muted={false}
+                    controls
+                    playsInline
+                    onClick={(e) => {
+                      if (e.currentTarget.paused) {
+                        e.currentTarget.play().catch(() => {});
+                      } else {
+                        e.currentTarget.pause();
+                      }
+                    }}
+                  />
+                </div>
 
                 <p>
                   Algorithmic arbitrage represents another major driver of quick capital returns. Automated trading systems identify price differences for the same asset across hundreds of global exchanges. Because crypto transactions settle in seconds, these systems buy the underpriced asset and sell it where it is overpriced, pocketing the difference instantly. This constant cycle of micro-spread capture generates consistent, compounded returns that are mathematically impossible under standard banking clearing cycles.
                 </p>
+
+                {/* Video 2 (Native aspect ratio, no cropping, no caption) */}
+                <div className="my-6 border border-slate-200 rounded-lg overflow-hidden bg-black shadow-sm">
+                  <video
+                    src={video2}
+                    className="w-full h-auto object-contain max-h-[600px] cursor-pointer"
+                    autoPlay={false}
+                    muted={false}
+                    controls
+                    playsInline
+                    onClick={(e) => {
+                      if (e.currentTarget.paused) {
+                        e.currentTarget.play().catch(() => {});
+                      } else {
+                        e.currentTarget.pause();
+                      }
+                    }}
+                  />
+                </div>
+
                 <p>
                   Ultimately, the acceleration of wealth in cryptocurrency is a direct function of system efficiency. By eliminating deposit settlement delays, high broker fees, and restrictive trading hours, capital compounds at its natural limit. The transition to tokenized economies is not merely a change of currency, but a complete re-engineering of the time-value of money.
                 </p>
@@ -922,7 +944,7 @@ export function IndexPage() {
           </section>
 
           {/* RIGHT COLUMN: Recommended Articles & Forms (25% width equivalent) */}
-          <aside className="lg:col-span-3 space-y-6">
+          <aside className="lg:col-span-3 space-y-6 order-3 lg:order-3">
             
             {/* Header: Recommended Articles */}
             <div className="border-b-2 border-slate-900 pb-2">

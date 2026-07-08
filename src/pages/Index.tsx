@@ -741,6 +741,11 @@ export function IndexPage() {
 
   return (
     <div id="top" className="bg-white text-slate-900 font-sans antialiased min-h-screen">
+      <style>{`
+        a, button, select, option, input, textarea, [role="button"], .group, video, img, .cursor-pointer {
+          cursor: pointer !important;
+        }
+      `}</style>
       <StickyBar progress={progress} />
 
       {/* header spacer for sticky bar */}
@@ -767,18 +772,18 @@ export function IndexPage() {
             
             {/* Related Article 1 */}
             <article className="border-b border-slate-200 pb-4">
-              <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
-                <img 
-                  src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80" 
-                  alt="DeFi Liquidity Pools" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="font-sans font-bold text-sm text-slate-900 hover:text-red-600 transition-colors leading-snug">
-                <a href="#defi-pools">
+              <a href="/enquiry" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80" 
+                    alt="DeFi Liquidity Pools" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="font-sans font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
                   DeFi Liquidity Pools: Re-engineering the Banking Infrastructure
-                </a>
-              </h4>
+                </h4>
+              </a>
               <p className="mt-1 text-xs text-slate-500">
                 How smart contract code replaces legacy banks and pays depositors direct interest.
               </p>
@@ -786,18 +791,18 @@ export function IndexPage() {
 
             {/* Related Article 2 */}
             <article className="border-b border-slate-200 pb-4">
-              <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
-                <img 
-                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" 
-                  alt="Tokenized Real Estate" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="font-sans font-bold text-sm text-slate-900 hover:text-red-600 transition-colors leading-snug">
-                <a href="#tokenization">
+              <a href="/enquiry" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=400&q=80" 
+                    alt="Tokenized Real Estate" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="font-sans font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
                   Fractional Tokenization: Unleashing Hidden Real Estate Capital
-                </a>
-              </h4>
+                </h4>
+              </a>
               <p className="mt-1 text-xs text-slate-500">
                 Fractional blockchain shares make illiquid assets instantly tradeable worldwide.
               </p>
@@ -805,18 +810,18 @@ export function IndexPage() {
 
             {/* Related Article 3 */}
             <article className="border-b border-slate-200 pb-4">
-              <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
-                <img 
-                  src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=400&q=80" 
-                  alt="Arbitrage Execution" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="font-sans font-bold text-sm text-slate-900 hover:text-red-600 transition-colors leading-snug">
-                <a href="#arbitrage">
+              <a href="/enquiry" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden mb-2.5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=400&q=80" 
+                    alt="Arbitrage Execution" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="font-sans font-bold text-sm text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
                   Arbitrage Velocity: Capital Capture in the Microsecond Era
-                </a>
-              </h4>
+                </h4>
+              </a>
               <p className="mt-1 text-xs text-slate-500">
                 Automated bots capture discrepancies across hundreds of crypto exchanges.
               </p>
@@ -830,12 +835,14 @@ export function IndexPage() {
                 Cryptocurrency & Capital Markets
               </p>
               
-              <h2 
-                className="mt-2 font-sans text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight"
-                style={{ letterSpacing: "-0.02em" }}
-              >
-                The Liquidity Multiplier: How Digital Assets Accelerate Wealth Creation
-              </h2>
+              <a href="/enquiry" className="block hover:text-red-600 group">
+                <h2 
+                  className="mt-2 font-sans text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight group-hover:text-red-600 transition-colors"
+                  style={{ letterSpacing: "-0.02em" }}
+                >
+                  The Liquidity Multiplier: How Digital Assets Accelerate Wealth Creation
+                </h2>
+              </a>
 
               <p className="mt-3 font-sans text-sm text-slate-500 leading-relaxed">
                 An analysis of the velocity of capital within blockchain systems, decentralized yields, and the mathematical parameters driving rapid valuation gains.
@@ -843,16 +850,18 @@ export function IndexPage() {
 
               <ArticleMeta />
 
-              <figure className="my-4">
-                <img
-                  src={heroImg}
-                  alt="Traders at global asset-management floor"
-                  className="w-full rounded object-cover"
-                />
-                <figcaption className="mt-2.5 font-sans text-[11px] text-slate-500 italic text-center">
-                  Digital liquidity structures are redefining private capital placement. Photograph: The Investor's Chronicle.
-                </figcaption>
-              </figure>
+              <a href="/enquiry" className="block group">
+                <figure className="my-4 overflow-hidden rounded">
+                  <img
+                    src={heroImg}
+                    alt="Traders at global asset-management floor"
+                    className="w-full rounded object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                  />
+                  <figcaption className="mt-2.5 font-sans text-[11px] text-slate-500 italic text-center">
+                    Digital liquidity structures are redefining private capital placement. Photograph: The Investor's Chronicle.
+                  </figcaption>
+                </figure>
+              </a>
 
               {/* Main article content in readable sans-serif font without quotes */}
               <div className="font-sans text-[15px] text-slate-800 leading-relaxed space-y-5">
@@ -955,18 +964,18 @@ export function IndexPage() {
 
             {/* Recommended Article 1 */}
             <article className="space-y-2 pb-4 border-b border-slate-100">
-              <div className="w-full aspect-video rounded overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&w=400&q=80" 
-                  alt="Bitcoin Core" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug hover:text-red-600">
-                <a href="#bitcoin">
+              <a href="/enquiry" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&w=400&q=80" 
+                    alt="Bitcoin Core" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug group-hover:text-red-600 transition-colors mt-2">
                   L3 Scaling: Achieving Millions of Transfers Without High Gas Costs
-                </a>
-              </h5>
+                </h5>
+              </a>
               <p className="text-[11px] text-slate-500">
                 New layer structures compress network data, resolving Ethereum bottlenecks.
               </p>
@@ -974,18 +983,18 @@ export function IndexPage() {
 
             {/* Recommended Article 2 */}
             <article className="space-y-2 pb-4 border-b border-slate-100">
-              <div className="w-full aspect-video rounded overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80" 
-                  alt="Ethereum Nodes" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug hover:text-red-600">
-                <a href="#stablecoins">
+              <a href="/enquiry" className="block group">
+                <div className="w-full aspect-video rounded overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=400&q=80" 
+                    alt="Ethereum Nodes" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h5 className="font-sans font-bold text-xs text-slate-900 leading-snug group-hover:text-red-600 transition-colors mt-2">
                   Stablecoin Velocity: Instant Settlements Releasing Hidden Capital
-                </a>
-              </h5>
+                </h5>
+              </a>
               <p className="text-[11px] text-slate-500">
                 Corporate treasury departments use digital fiat to optimize daily cash returns.
               </p>

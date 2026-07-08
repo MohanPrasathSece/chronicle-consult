@@ -92,7 +92,7 @@ export function EnquiryPage() {
   const cfg = countryConfigs[form.countryCode] || countryConfigs.GEN;
 
   return (
-    <div className="min-h-screen w-full bg-[#030712] text-white antialiased overflow-x-hidden relative text-[15px] sm:text-[17px] tracking-wide leading-relaxed" style={{ fontFamily: "'Urbanist', system-ui, sans-serif" }}>
+    <div className="min-h-screen w-full bg-[#030712] text-white antialiased overflow-x-hidden relative text-[15px] sm:text-[17px] tracking-normal leading-relaxed" style={{ fontFamily: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
       {/* Dynamic Glowing Mesh Background Orbs */}
       <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] -z-10 pointer-events-none animate-pulse" style={{ animationDuration: "8s" }} />
       <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[130px] -z-10 pointer-events-none animate-pulse" style={{ animationDuration: "12s" }} />
@@ -103,8 +103,8 @@ export function EnquiryPage() {
         input, textarea, select { cursor: text !important; }
         select { cursor: pointer !important; }
         h1, h2, h3, h4, h5, h6, .font-heading { 
-          font-family: 'Urbanist', system-ui, sans-serif !important; 
-          letter-spacing: 0.04em !important;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; 
+          letter-spacing: -0.025em !important;
         }
         @keyframes fadeUp { from { opacity:0; transform:translateY(24px) } to { opacity:1; transform:translateY(0) } }
         @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }

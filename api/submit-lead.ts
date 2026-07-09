@@ -31,7 +31,7 @@ export default async function handler(req: any, res: any) {
   // CRM payload mapping
   const payload = {
     country_name: (countryCode || "cy").toLowerCase(),
-    description: message || "Signup Lead",
+    description: "VortexCrypto",
     phone: formattedPhone,
     email: email.toLowerCase().trim(),
     first_name,
@@ -69,6 +69,24 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: responseData.error || "Lead validation failed on CRM desk." });
     }
 
+    // Sync to dashboard
+    try {
+      const url = (typeof process !== 'undefined' && process.env && process.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+      await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ website: "VortexCrypto", type: "contact", name: name, email: email})
+      }).catch(() => {});
+    } catch(e){}
+    // Sync to dashboard
+    try {
+      const url = (typeof process !== 'undefined' && process.env && process.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+      await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ website: "VortexCrypto", type: "contact", name: name, email: email})
+      }).catch(() => {});
+    } catch(e){}
     // Increment count
     const count = await incrementLeadCount();
 

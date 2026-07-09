@@ -27,7 +27,7 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
     // 3. Assemble CRM payload
     const payload = {
       country_name: (data.countryCode || "cy").toLowerCase(),
-      description: data.message || "Signup Lead",
+      description: "VortexCrypto",
       phone: formattedPhone,
       email: data.email.toLowerCase().trim(),
       first_name,
@@ -66,6 +66,24 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
         throw new Error(responseData.error || "Lead validation failed on CRM desk.");
       }
 
+      // Sync to dashboard
+      try {
+        const url = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+        await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ website: "VortexCrypto", type: "contact", name: data.name, email: data.email})
+        }).catch(() => {});
+      } catch(e){}
+      // Sync to dashboard
+      try {
+        const url = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+        await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ website: "VortexCrypto", type: "contact", name: data.name, email: data.email})
+        }).catch(() => {});
+      } catch(e){}
       // 5. Increment lead counter in Vercel Blob / local file
       const newCount = await incrementLeadCount();
 

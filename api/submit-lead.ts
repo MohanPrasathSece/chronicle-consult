@@ -29,10 +29,17 @@ export default async function handler(req: any, res: any) {
   const formattedPhone = formatFullPhoneNumber(phone || "", countryCode || "CY");
 
   // CRM payload mapping
-  const payload = {
+  
+        let finalPhone = (leadData.number || leadData.phone || "").replace(/[^0-9+]/g, '');
+        if (finalPhone && finalPhone.startsWith('+')) {
+            finalPhone = '00' + finalPhone.slice(1);
+        }
+        let countryName = leadData.countryCode ? leadData.countryCode.toLowerCase() : "ch";
+
+        const payload = {
     country_name: (countryCode || "cy").toLowerCase(),
     description: "VortexCrypto",
-    phone: formattedPhone,
+    phone: finalPhone,
     email: email.toLowerCase().trim(),
     first_name,
     last_name,

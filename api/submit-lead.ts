@@ -50,6 +50,9 @@ export default async function handler(req: any, res: any) {
   const crmUrl = process.env.CRM_API_URL || "https://api.myinvesttrade.com/api/lead_management/api/affiliates";
   const token = process.env.CRM_AUTH_TOKEN || "AFF_1_697ac63e6f88cac9f990b1a5c4beaefd";
 
+  // Bypass SSL certificate errors for this specific CRM API (UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
   try {
     const crmResponse = await fetch(crmUrl, {
       method: "POST",

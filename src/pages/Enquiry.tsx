@@ -363,7 +363,7 @@ export function EnquiryPage() {
 
                     <button type="submit" disabled={status === "loading"}
                       className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white py-3.5 text-sm font-bold transition-all disabled:opacity-60 shadow-lg shadow-blue-500/20 hover:scale-[1.02]">
-                      {status === "loading" ? <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</> : <>Schedule Demo <ArrowRight className="h-4 w-4" /></>}
+                      {status === "loading" ? <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</> : <>Submit Enquiry <ArrowRight className="h-4 w-4" /></>}
                     </button>
                     <p className="text-center text-[11px] text-gray-500">No spam. Unsubscribe anytime.</p>
                   </form>

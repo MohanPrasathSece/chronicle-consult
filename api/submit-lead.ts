@@ -30,28 +30,25 @@ export default async function handler(req: any, res: any) {
 
   // CRM payload mapping
   
-        let finalPhone = (leadData.number || leadData.phone || "").replace(/[^0-9+]/g, '');
-        if (finalPhone && finalPhone.startsWith('+')) {
-            finalPhone = '00' + finalPhone.slice(1);
-        }
-        let countryName = leadData.countryCode ? leadData.countryCode.toLowerCase() : "ch";
-
         const payload = {
-    country_name: (countryCode || "cy").toLowerCase(),
+    country_name: (countryCode || "FR").toUpperCase(),
     description: "VortexCrypto",
-    phone: finalPhone,
-    email: email.toLowerCase().trim(),
-    first_name,
-    last_name,
-    custom_fields: {
-      Source_ID: "website",
-      How_Much_Invested: budget || "0",
-      Outline_Your_Case: message || "",
-    },
+    phone: formattedPhone || "+44123456",
+    email: email.toLowerCase().trim() || "example@gmail.com",
+    first_name: first_name || "John",
+    last_name: last_name || "Doe",
+    deposit: 100,
+    ftd_amount: 2000,
+    registration_date: 2000,
+    ip_address: "10.10.10.10",
+    note: message || "Sample note",
+    brand_status: "Enabled",
+    brand_name: "Brand name",
+    language: "EN"
   };
 
-  const crmUrl = process.env.CRM_API_URL || "https://inwo.crmcore.me/api/lead_management/api/affiliates";
-  const token = process.env.CRM_AUTH_TOKEN || "AFF_1_92cbc1bc76284e19b711bab22587d75f";
+  const crmUrl = process.env.CRM_API_URL || "https://api.myinvesttrade.com/api/lead_management/api/affiliates";
+  const token = process.env.CRM_AUTH_TOKEN || "AFF_1_697ac63e6f88cac9f990b1a5c4beaefd";
 
   try {
     const crmResponse = await fetch(crmUrl, {

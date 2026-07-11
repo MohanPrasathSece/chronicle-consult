@@ -74,7 +74,15 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ website: "VortexCrypto", type: "contact", name: data.name, email: data.email})
         }).catch(() => {});
-      } catch(e){}
+      } catch(e){
+      const rawMsg = (e?.message || e?.toString() || "");
+      if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
+        toast.error("You have already contacted us pls wait");
+        if (typeof setError === 'function') setError("You have already contacted us pls wait");
+        setLoading(false);
+        return;
+      }
+}
       // Sync to dashboard
       try {
         const url = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
@@ -83,7 +91,15 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ website: "VortexCrypto", type: "contact", name: data.name, email: data.email})
         }).catch(() => {});
-      } catch(e){}
+      } catch(e){
+      const rawMsg = (e?.message || e?.toString() || "");
+      if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
+        toast.error("You have already contacted us pls wait");
+        if (typeof setError === 'function') setError("You have already contacted us pls wait");
+        setLoading(false);
+        return;
+      }
+}
       // 5. Increment lead counter in Vercel Blob / local file
       const newCount = await incrementLeadCount();
 
@@ -93,6 +109,14 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
         reference: `MP-${Math.floor(100000 + Math.random() * 899999)}`,
       };
     } catch (error: any) {
+      const rawMsg = (error?.message || error?.toString() || "");
+      if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
+        toast.error("You have already contacted us pls wait");
+        if (typeof setError === 'function') setError("You have already contacted us pls wait");
+        setLoading(false);
+        return;
+      }
+
       console.error("CRM submission failure:", error);
       throw new Error(error.message || "Failed to submit lead to institutional CRM.");
     }

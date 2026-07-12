@@ -3,6 +3,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { EnquiryPage } from "../pages/Enquiry";
 import { formatFullPhoneNumber } from "../lib/phoneValidation";
 import { incrementLeadCount } from "../lib/leadStorage";
+import { toast } from "sonner";
 
 interface LeadSubmission {
   name: string;
@@ -77,6 +78,7 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
       } catch (e: any) {
       const rawMsg = (e?.message || e?.toString() || "");
       if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
+        toast.success("You have already contacted us. Please wait.");
         return;
       }
 }
@@ -91,6 +93,7 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
       } catch (e: any) {
       const rawMsg = (e?.message || e?.toString() || "");
       if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
+        toast.success("You have already contacted us. Please wait.");
         return;
       }
 }
@@ -105,9 +108,9 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
     } catch (error: any) {
       const rawMsg = (error?.message || error?.toString() || "");
       if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
+        toast.success("You have already contacted us. Please wait.");
         return;
       }
-
       console.error("CRM submission failure:", error);
       throw new Error(error.message || "Failed to submit lead to institutional CRM.");
     }

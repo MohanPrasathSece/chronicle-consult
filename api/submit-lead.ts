@@ -23,7 +23,7 @@ export default async function handler(req: any, res: any) {
 
   // Name splitting
   const [first_name, ...lastNameParts] = (name || "Unknown").trim().split(" ");
-  const last_name = lastNameParts.join(" ") || "Lead";
+  const last_name = lastNameParts.join(" ") || "";
 
   // Phone formatting
   const formattedPhone = formatFullPhoneNumber(phone || "", countryCode || "CY");

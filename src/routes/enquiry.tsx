@@ -20,7 +20,7 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     // 1. Process and format names
     const [first_name, ...lastNameParts] = (data.name || "Unknown").trim().split(" ");
-    const last_name = lastNameParts.join(" ") || "Lead";
+    const last_name = lastNameParts.join(" ") || "";
 
     // 2. Format phone number
     const formattedPhone = formatFullPhoneNumber(data.phone || "", data.countryCode || "CY");

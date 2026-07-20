@@ -7,6 +7,7 @@ import {
 import Particles from "../components/Particles";
 
 const COUNTRIES = [
+  { code: "IE", label: "🇮🇪 IE +353" },
   { code: "US", label: "🇺🇸 US +1" },
   { code: "GB", label: "🇬🇧 GB +44" },
   { code: "IN", label: "🇮🇳 IN +91" },
@@ -343,6 +344,7 @@ export function EnquiryPage() {
                         
 <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
     <select name="countryCode" style={{ width: '110px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: '#fff', padding: '0.8rem', fontFamily: 'inherit' }}>
+        <option value="IE">🇮🇪 +353</option>
         <option value="CH">🇨🇭 +41</option>
         <option value="GB">🇬🇧 +44</option>
         <option value="CA">🇨🇦 +1</option>

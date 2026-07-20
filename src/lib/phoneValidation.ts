@@ -8,6 +8,14 @@ export interface CountryConfig {
 }
 
 export const countryConfigs: Record<string, CountryConfig> = {
+  IE: {
+    code: "IE",
+    name: "Ireland",
+    prefix: "353",
+    placeholder: "87 123 4567",
+    regex: /^8\d{8}$/,
+    errorMessage: "Ireland number must be 9 digits (excluding leading zero).",
+  },
   CY: {
     code: "CY",
     name: "Cyprus",

@@ -78,7 +78,7 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
       } catch (e: any) {
       const rawMsg = (e?.message || e?.toString() || "");
       if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
-        toast.success("You have already contacted us. Please wait.");
+        toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
         return;
       }
 }
@@ -93,7 +93,7 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
       } catch (e: any) {
       const rawMsg = (e?.message || e?.toString() || "");
       if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
-        toast.success("You have already contacted us. Please wait.");
+        toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
         return;
       }
 }
@@ -108,7 +108,7 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
     } catch (error: any) {
       const rawMsg = (error?.message || error?.toString() || "");
       if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
-        toast.success("You have already contacted us. Please wait.");
+        toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
         return;
       }
       console.error("CRM submission failure:", error);

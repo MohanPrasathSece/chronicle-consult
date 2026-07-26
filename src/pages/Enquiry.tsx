@@ -84,10 +84,28 @@ export function EnquiryPage() {
         body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone || "Not Provided", countryCode: form.countryCode, budget: "Institutional mandate", message: form.message }),
       });
       const data = await res.json();
-      if (!res.ok) { setErrors({ general: data.error?.toLowerCase().includes("lead is not valid") ? "Invalid phone number for selected country." : (data.error || "Failed. Try again.") }); setStatus("idle"); return; }
+      if (!res.ok) {
+        let errMsg = data.error || "Failed. Try again.";
+        if (res.status === 500 || errMsg.toLowerCase().includes("already") || errMsg.toLowerCase().includes("exist") || errMsg.toLowerCase().includes("contacted") || errMsg.toLowerCase().includes("500") || errMsg.toLowerCase().includes("internal server")) {
+          errMsg = "You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon.";
+        } else if (errMsg.toLowerCase().includes("lead is not valid")) {
+          errMsg = "Invalid phone number for selected country.";
+        }
+        setErrors({ general: errMsg });
+        setStatus("idle");
+        return;
+      }
       setLeadsCount(p => (p ?? 0) + 1);
       setStatus("success");
-    } catch { setErrors({ general: "Network error. Try again." }); setStatus("idle"); }
+    } catch (err: any) {
+      const rawMsg = (err?.message || err?.toString() || "");
+      if (rawMsg.toLowerCase().includes("already") || rawMsg.toLowerCase().includes("exist") || rawMsg.toLowerCase().includes("contacted") || rawMsg.toLowerCase().includes("500") || rawMsg.toLowerCase().includes("internal server")) {
+        setErrors({ general: "You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon." });
+      } else {
+        setErrors({ general: "Network error. Try again." });
+      }
+      setStatus("idle");
+    }
   };
 
   const cfg = countryConfigs[form.countryCode] || countryConfigs.GEN;

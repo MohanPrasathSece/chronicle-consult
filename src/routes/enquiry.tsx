@@ -64,6 +64,10 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
       }
 
       if (!response.ok) {
+        const errMsg = (responseData.error || responseData.message || responseText || "").toString();
+        if (response.status === 500 || errMsg.toLowerCase().includes("already") || errMsg.toLowerCase().includes("exist") || errMsg.toLowerCase().includes("contacted") || errMsg.toLowerCase().includes("500") || errMsg.toLowerCase().includes("internal server")) {
+          throw new Error("You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon.");
+        }
         throw new Error(responseData.error || "Lead validation failed on CRM desk.");
       }
 
@@ -75,28 +79,8 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ website: "VortexCrypto", type: "contact", name: data.name, email: data.email})
         }).catch(() => {});
-      } catch (e: any) {
-      const rawMsg = (e?.message || e?.toString() || "");
-      if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
-        toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
-        return;
-      }
-}
-      // Sync to dashboard
-      try {
-        const url = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_DASHBOARD_URL) || "https://lead-dashboard-orcin.vercel.app/api/increment";
-        await fetch(url, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ website: "VortexCrypto", type: "contact", name: data.name, email: data.email})
-        }).catch(() => {});
-      } catch (e: any) {
-      const rawMsg = (e?.message || e?.toString() || "");
-      if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
-        toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
-        return;
-      }
-}
+      } catch (e: any) {}
+
       // 5. Increment lead counter in Vercel Blob / local file
       const newCount = await incrementLeadCount();
 
@@ -106,12 +90,11 @@ export const submitLeadToCRM = createServerFn({ method: "POST" })
         reference: `MP-${Math.floor(100000 + Math.random() * 899999)}`,
       };
     } catch (error: any) {
-      const rawMsg = (error?.message || error?.toString() || "");
-      if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
-        toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
-        return;
-      }
       console.error("CRM submission failure:", error);
+      const rawMsg = (error?.message || error?.toString() || "");
+      if (rawMsg.toLowerCase().includes("already") || rawMsg.toLowerCase().includes("exist") || rawMsg.toLowerCase().includes("contacted") || rawMsg.toLowerCase().includes("500") || rawMsg.toLowerCase().includes("internal server")) {
+        throw new Error("You have already contacted us. Please wait while our team reviews your request. We'll get back to you soon.");
+      }
       throw new Error(error.message || "Failed to submit lead to institutional CRM.");
     }
   });
